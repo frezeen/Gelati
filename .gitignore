@@ -9,6 +9,7 @@
 
 # File di testo con regole e prompt
 *.txt
+*.md
 
 # File di gestione pratica
 Gestione*.txt
