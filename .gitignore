@@ -1,0 +1,86 @@
+# ============================================
+# GITIGNORE - PROGETTO SITO WEB GELATI
+# ============================================
+# Esclude tutto tranne i file necessari al sito web
+
+# ============================================
+# FILE DI LAVORO E DOCUMENTAZIONE
+# ============================================
+
+# File di testo con regole e prompt
+*.txt
+
+# File di gestione pratica
+Gestione*.txt
+
+# ============================================
+# CONFIGURAZIONI IDE E EDITOR
+# ============================================
+
+# Visual Studio Code
+.vscode/
+.vscode/*
+
+# Kiro AI
+.kiro/
+.kiro/*
+
+# ============================================
+# SISTEMA OPERATIVO
+# ============================================
+
+# Windows
+Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Linux
+*~
+
+# ============================================
+# FILE TEMPORANEI E DEBUG
+# ============================================
+
+# Backup
+*.bak
+*.backup
+*.old
+*.tmp
+
+# Log
+*.log
+
+# Link checker e report di debug
+link_checker*.html
+*_report.html
+*_check.html
+
+# ============================================
+# COSA VIENE TRACCIATO (WHITELIST)
+# ============================================
+# Solo file HTML del sito web
+
+# File HTML principali
+!index.html
+!*.html
+
+# Cartella Ricette (solo HTML)
+!Ricette/
+!Ricette/**/*.html
+
+# ============================================
+# NOTE
+# ============================================
+# Questo .gitignore mantiene solo:
+# - index.html (homepage)
+# - Tutti i file HTML nelle sottocartelle Ricette/
+# 
+# Esclude:
+# - File .txt di configurazione e regole
+# - Cartelle .kiro e .vscode
+# - File temporanei e di sistema
