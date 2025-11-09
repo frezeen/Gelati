@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulazione Sensoriale - Gelato Ricotta e Vaniglia</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            animation: backgroundShift 15s ease infinite alternate;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        @keyframes backgroundShift {
+            0% { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
+            100% { background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); }
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #4facfe, #00f2fe);
+            color: white;
+            padding: 60px 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.8em;
+            font-weight: 700;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+            margin-bottom: 15px;
+        }
+        
+        .nav-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 12px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        .btn-primary {
+            background: white;
+            color: #4facfe;
+        }
+        
+        .btn-secondary {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+        
+        .section {
+            padding: 40px 30px;
+            margin: 20px;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+        
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+        
+        .section h2 {
+            font-size: 2em;
+            margin-bottom: 25px;
+            color: white;
+        }
+        
+        .analisi {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+        }
+        
+        .sensoriale {
+            background: linear-gradient(135deg, #f093fb, #f5576c);
+        }
+        
+        .tecnica {
+            background: linear-gradient(135deg, #4facfe, #00f2fe);
+        }
+        
+        .comparativa {
+            background: linear-gradient(135deg, #43e97b, #38f9d7);
+        }
+        
+        .card {
+            background: rgba(255,255,255,0.25);
+            padding: 25px;
+            border-radius: 12px;
+            margin: 15px 0;
+            backdrop-filter: blur(10px);
+            border-left: 5px solid white;
+        }
+        
+        .card h3 {
+            color: white;
+            font-size: 1.5em;
+            margin-bottom: 15px;
+        }
+        
+        .card p, .card ul {
+            color: white;
+            line-height: 1.8;
+            opacity: 0.95;
+        }
+        
+        .card ul {
+            list-style-position: inside;
+            margin-left: 10px;
+        }
+        
+        .card li {
+            margin: 8px 0;
+        }
+        
+        .radar-chart {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin: 20px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .parameter-bar {
+            margin: 15px 0;
+        }
+        
+        .parameter-label {
+            color: #333;
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .bar-container {
+            background: #e0e0e0;
+            height: 30px;
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .bar-fill {
+            height: 100%;
+            border-radius: 15px;
+            transition: width 1s ease;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 10px;
+            color: white;
+            font-weight: 600;
+        }
+        
+        .bar-excellent { background: linear-gradient(90deg, #4caf50, #8bc34a); }
+        .bar-good { background: linear-gradient(90deg, #2196f3, #03a9f4); }
+        .bar-moderate { background: linear-gradient(90deg, #ff9800, #ffc107); }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 20px 0;
+        }
+        
+        th {
+            background: rgba(0,0,0,0.8);
+            color: white;
+            padding: 15px;
+            text-align: left;
+        }
+        
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #eee;
+            color: #333;
+        }
+        
+        tr:hover {
+            background: #e3f2fd;
+        }
+        
+        .highlight {
+            background: rgba(255,255,255,0.3);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border: 2px solid white;
+        }
+        
+        .highlight strong {
+            color: white;
+            font-size: 1.2em;
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 { font-size: 2em; }
+            .section { margin: 10px; padding: 20px 15px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🔬 Simulazione Sensoriale</h1>
+            <h2>Gelato Crema di Ricotta e Vaniglia</h2>
+            <p>Analisi predittiva professionale delle caratteristiche organolettiche</p>
+            <div class="nav-buttons">
+                <a href="Creme_Ricotta_Vaniglia_Ricetta.html" class="btn btn-primary">📋 Torna alla Ricetta</a>
+                <a href="index.html" class="btn btn-secondary">📚 Tutte le Creme</a>
+                <a href="../../../index.html" class="btn btn-secondary">🏠 Home</a>
+            </div>
+        </div>
+
+        <div class="section analisi">
+            <h2>📊 Profilo Sensoriale Predittivo</h2>
+            
+            <div class="radar-chart">
+                <h3 style="color: #333; text-align: center; margin-bottom: 30px;">Parametri Organolettici (scala 0-10)</h3>
+                
+                <div class="parameter-bar">
+                    <div class="parameter-label">
+                        <span>🍬 Dolcezza</span>
+                        <span>8.5/10</span>
+                    </div>
+                    <div class="bar-container">
+                        <div class="bar-fill bar-excellent" style="width: 85%;">Equilibrata</div>
+                    </div>
+                </div>
+                
+                <div class="parameter-bar">
+                    <div class="parameter-label">
+                        <span>🧊 Spatolabilità</span>
+                        <span>9.0/10</span>
+                    </div>
+                    <div class="bar-container">
+                        <div class="bar-fill bar-excellent" style="width: 90%;">Ottimale</div>
+                    </div>
+                </div>
+                
+                <div class="parameter-bar">
+                    <div class="parameter-label">
+                        <span>🥛 Cremosità</span>
+                        <span>8.8/10</span>
+                    </div>
+                    <div class="bar-container">
+                        <div class="bar-fill bar-excellent" style="width: 88%;">Vellutata</div>
+                    </div>
+                </div>
+                
+                <div class="parameter-bar">
+                    <div class="parameter-label">
+                        <span>👅 Persistenza Aromatica</span>
+                        <span>8.0/10</span>
+                    </div>
+                    <div class="bar-container">
+                        <div class="bar-fill bar-good" style="width: 80%;">Buona</div>
+                    </div>
+                </div>
+                
+                <div class="parameter-bar">
+                    <div class="parameter-label">
+                        <span>❄️ Resistenza Fusione</span>
+                        <span>7.5/10</span>
+                    </div>
+                    <div class="bar-container">
+                        <div class="bar-fill bar-good" style="width: 75%;">Moderata</div>
+                    </div>
+                </div>
+                
+                <div class="parameter-bar">
+                    <div class="parameter-label">
+                        <span>🎨 Complessità Gusto</span>
+                        <span>7.8/10</span>
+                    </div>
+                    <div class="bar-container">
+                        <div class="bar-fill bar-good" style="width: 78%;">Interessante</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section sensoriale">
+            <h2>👃 Analisi Sensoriale Dettagliata</h2>
+            
+            <div class="card">
+                <h3>👁️ Aspetto Visivo</h3>
+                <p><strong>Colore:</strong> Bianco crema delicato con sfumature avorio, tipico dei gelati a base di ricotta. La texture superficiale presenta una leggera opacità caratteristica.</p>
+                <p><strong>Consistenza visiva:</strong> Compatta e omogenea, con possibili micro-inclusioni di ricotta che conferiscono un aspetto artigianale e rustico-elegante.</p>
+                <p><strong>Brillantezza:</strong> Moderata, con finish satinato tipico dei gelati ad alto contenuto proteico.</p>
+            </div>
+            
+            <div class="card">
+                <h3>👃 Profilo Olfattivo</h3>
+                <p><strong>Note di testa:</strong> Vaniglia naturale intensa ma non invadente, con sentori floreali e leggermente speziati della Pasta Vaniglia Antica Pregel.</p>
+                <p><strong>Note di cuore:</strong> Latteo fresco e pulito dalla ricotta romana, con delicate sfumature di latte appena munto e panna dolce.</p>
+                <p><strong>Note di fondo:</strong> Cremosità persistente con retrogusto leggermente acidulo tipico della ricotta fresca di qualità.</p>
+                <p><strong>Intensità aromatica:</strong> Media-alta (7/10), equilibrata tra vaniglia e ricotta senza predominanze.</p>
+            </div>
+            
+            <div class="card">
+                <h3>👅 Esperienza Gustativa</h3>
+                <p><strong>Primo impatto:</strong> Dolcezza immediata ma non aggressiva (POD 15,1%), con freschezza lattea che bilancia perfettamente.</p>
+                <p><strong>Sviluppo in bocca:</strong> La cremosità della ricotta si fonde con la vaniglia creando un'esperienza vellutata. Texture leggermente granulosa (caratteristica positiva della ricotta) che aggiunge interesse tattile.</p>
+                <p><strong>Retrogusto:</strong> Persistente e pulito, con la vaniglia che rimane delicatamente presente. Leggera nota acidula della ricotta che rinfresca il palato.</p>
+                <p><strong>Bilanciamento:</strong> Eccellente equilibrio tra dolce, cremoso e fresco. Nessun componente sovrasta gli altri.</p>
+            </div>
+            
+            <div class="card">
+                <h3>🌡️ Comportamento Termico</h3>
+                <p><strong>A -14°C (servizio):</strong> Spatolabilità ottimale, il gelato si lascia prelevare facilmente senza sforzo. Texture cremosa e avvolgente.</p>
+                <p><strong>A -10°C:</strong> Molto morbido, quasi "gelato soft". Ideale per chi preferisce texture extra cremose.</p>
+                <p><strong>Fusione in bocca:</strong> Rapida e piacevole grazie al PAC 113. Il gelato si scioglie uniformemente rilasciando gradualmente gli aromi.</p>
+                <p><strong>Resistenza a temperatura ambiente:</strong> Moderata (7-10 minuti prima di diventare troppo molle), tipica dei gelati con PAC medio-alto.</p>
+            </div>
+        </div>
+
+        <div class="section tecnica">
+            <h2>🔬 Analisi Tecnica Approfondita</h2>
+            
+            <div class="card">
+                <h3>⚗️ Composizione e Struttura</h3>
+                <table>
+                    <tr>
+                        <th>Componente</th>
+                        <th>Valore</th>
+                        <th>Impatto Sensoriale</th>
+                    </tr>
+                    <tr>
+                        <td>Grassi Totali</td>
+                        <td>9,1%</td>
+                        <td>Cremosità elevata, bocca piena e vellutata</td>
+                    </tr>
+                    <tr>
+                        <td>Proteine Totali</td>
+                        <td>5,8%</td>
+                        <td>Struttura compatta, resistenza alla fusione</td>
+                    </tr>
+                    <tr>
+                        <td>Zuccheri Totali</td>
+                        <td>~13,5%</td>
+                        <td>Dolcezza equilibrata, PAC ottimale</td>
+                    </tr>
+                    <tr>
+                        <td>Solidi Totali</td>
+                        <td>37,2%</td>
+                        <td>Corpo pieno, texture densa ma non pesante</td>
+                    </tr>
+                    <tr>
+                        <td>Acqua</td>
+                        <td>~62,8%</td>
+                        <td>Freschezza, facilita fusione in bocca</td>
+                    </tr>
+                </table>
+            </div>
+            
+            <div class="card">
+                <h3>🎯 Bilanciamento POD/PAC</h3>
+                <p><strong>POD 15,1%:</strong> Dolcezza perfettamente calibrata per un gelato alla crema. La ricotta apporta una leggera nota acidula che bilancia ulteriormente, evitando qualsiasi sensazione stucchevole.</p>
+                <p><strong>PAC 113:</strong> Valore ottimale per Ninja Creami. Garantisce:</p>
+                <ul>
+                    <li>Spatolabilità immediata a -14°C</li>
+                    <li>Assenza di cristalli di ghiaccio percepibili</li>
+                    <li>Texture cremosa e omogenea</li>
+                    <li>Fusione graduale e piacevole in bocca</li>
+                </ul>
+                <p><strong>Rapporto POD/PAC:</strong> 0,134 - Valore ideale che indica perfetto equilibrio tra dolcezza e morbidezza.</p>
+            </div>
+            
+            <div class="card">
+                <h3>🧪 Contributo Ingredienti Chiave</h3>
+                <p><strong>Ricotta Romana (75g - 10,5% miscela):</strong></p>
+                <ul>
+                    <li>Apporta 11,3g grassi (contributo significativo alla cremosità)</li>
+                    <li>Fornisce 8,3g proteine (struttura e corpo)</li>
+                    <li>Aggiunge 2,6g lattosio (dolcezza delicata + PAC)</li>
+                    <li>Texture leggermente granulosa caratteristica</li>
+                    <li>Nota acidula che rinfresca il palato</li>
+                </ul>
+                <p><strong>Pasta Vaniglia Antica Pregel (16g - 2,2% miscela):</strong></p>
+                <ul>
+                    <li>Aroma intenso e naturale di vaniglia Madagascar</li>
+                    <li>Apporta 7,2g zuccheri (contributo a POD e PAC)</li>
+                    <li>Colore avorio naturale</li>
+                    <li>Persistenza aromatica elevata</li>
+                </ul>
+                <p><strong>Blend Zuccherino (47g sacc + 39g dest):</strong></p>
+                <ul>
+                    <li>Destrosio al 45% (limite massimo) per massimizzare PAC</li>
+                    <li>Saccarosio 55% per dolcezza pulita e rotonda</li>
+                    <li>Bilanciamento ottimale senza eritritolo (gusto più naturale)</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section comparativa">
+            <h2>📈 Analisi Comparativa</h2>
+            
+            <div class="card">
+                <h3>🆚 Confronto con Gelato Vaniglia Classico</h3>
+                <table>
+                    <tr>
+                        <th>Caratteristica</th>
+                        <th>Ricotta e Vaniglia</th>
+                        <th>Vaniglia Classica</th>
+                    </tr>
+                    <tr>
+                        <td>Dolcezza</td>
+                        <td>15,1% POD</td>
+                        <td>15,0% POD</td>
+                    </tr>
+                    <tr>
+                        <td>Spatolabilità</td>
+                        <td>PAC 113 (ottima)</td>
+                        <td>PAC 110 (ottima)</td>
+                    </tr>
+                    <tr>
+                        <td>Grassi</td>
+                        <td>9,1% (più cremoso)</td>
+                        <td>7,5% (standard)</td>
+                    </tr>
+                    <tr>
+                        <td>Proteine</td>
+                        <td>5,8% (più strutturato)</td>
+                        <td>4,2% (standard)</td>
+                    </tr>
+                    <tr>
+                        <td>Texture</td>
+                        <td>Vellutata con micro-granulosità</td>
+                        <td>Liscia e omogenea</td>
+                    </tr>
+                    <tr>
+                        <td>Complessità</td>
+                        <td>Alta (ricotta + vaniglia)</td>
+                        <td>Media (solo vaniglia)</td>
+                    </tr>
+                    <tr>
+                        <td>Freschezza</td>
+                        <td>Alta (nota acidula ricotta)</td>
+                        <td>Media</td>
+                    </tr>
+                </table>
+            </div>
+            
+            <div class="card">
+                <h3>💡 Punti di Forza</h3>
+                <ul>
+                    <li><strong>Originalità:</strong> Combinazione insolita ma tradizionale (ricotta e vaniglia sono classici della pasticceria italiana)</li>
+                    <li><strong>Bilanciamento perfetto:</strong> POD e PAC ottimali per Ninja Creami</li>
+                    <li><strong>Cremosità superiore:</strong> Grassi 9,1% garantiscono texture vellutata</li>
+                    <li><strong>Complessità gustativa:</strong> Interazione interessante tra ricotta fresca e vaniglia</li>
+                    <li><strong>Freschezza:</strong> Nota acidula della ricotta evita stucchevolezza</li>
+                    <li><strong>Artigianalità:</strong> Texture leggermente rustica conferisce carattere</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h3>⚠️ Considerazioni</h3>
+                <ul>
+                    <li><strong>Texture non perfettamente liscia:</strong> La micro-granulosità della ricotta è caratteristica, non difetto, ma potrebbe non piacere a chi preferisce texture ultra-lisce</li>
+                    <li><strong>Shelf life limitata:</strong> La ricotta fresca richiede consumo entro 3-5 giorni per qualità ottimale</li>
+                    <li><strong>Variabilità ricotta:</strong> La qualità finale dipende molto dalla freschezza e qualità della ricotta romana utilizzata</li>
+                    <li><strong>Fusione moderata:</strong> PAC 113 significa che a temperatura ambiente si ammorbidisce in 7-10 minuti</li>
+                </ul>
+            </div>
+            
+            <div class="highlight">
+                <strong>🏆 VERDETTO FINALE:</strong><br><br>
+                Gelato di altissima qualità artigianale con profilo sensoriale complesso ed equilibrato. La combinazione ricotta-vaniglia crea un'esperienza gustativa unica che unisce tradizione e innovazione. Texture cremosa con carattere, dolcezza perfetta, spatolabilità ottimale. Ideale per palati raffinati che apprezzano gelati non banali con personalità distintiva. Voto complessivo: <strong>9.0/10</strong>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

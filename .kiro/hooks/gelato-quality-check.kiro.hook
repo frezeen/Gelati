@@ -1,0 +1,13 @@
+{
+  "enabled": true,
+  "name": "Gelato Rules Quality Control",
+  "description": "Performs a comprehensive quality check of the ice cream rules document, verifying mathematical consistency of calculations and formulas, contradictions between sections, unrealistic values, completeness of information and missing sections",
+  "version": "1",
+  "when": {
+    "type": "userTriggered"
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "Esegui un controllo qualità completo del file \"regole gelato agosto 2025 rev 2.txt\" verificando: 1) Coerenza matematica di tutti i calcoli e formule 2) Contraddizioni tra sezioni diverse 3) Valori fuori range realistici 4) Completezza delle informazioni e sezioni mancanti. Fornisci un report dettagliato con priorità alta/media/bassa per ogni problema trovato e suggerisci aggiornamenti o correzioni necessarie per migliorare la qualità delle regole."
+  }
+}

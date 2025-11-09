@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ricetta Gelato Pistacchio - Ninja Creami Deluxe</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; }
+        
+        body { 
+            font-family: 'Poppins', sans-serif; 
+            margin: 0; 
+            padding: 20px; 
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            animation: backgroundShift 15s ease-in-out infinite alternate;
+        }
+        
+        @keyframes backgroundShift {
+            0% { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+            50% { background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); }
+            100% { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+        
+        .container { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            background: rgba(255,255,255,0.95); 
+            border-radius: 20px; 
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1); 
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+        
+        .header { 
+            background: linear-gradient(135deg, #667eea, #764ba2); 
+            color: white; 
+            padding: 40px; 
+            text-align: center; 
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: '🌰';
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 3em;
+            opacity: 0.3;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .header h1 { 
+            margin: 0; 
+            font-size: 3em; 
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header-image {
+            width: 100%;
+            max-width: 400px;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin: 20px 0;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        
+        .nav-buttons {
+            margin: 20px 0;
+        }
+        
+        .nav-button {
+            display: inline-block;
+            padding: 12px 25px;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            margin: 5px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+        
+        .nav-button:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .section { 
+            margin: 30px; 
+            padding: 30px; 
+            border-radius: 20px; 
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .ingredienti { 
+            background: linear-gradient(135deg, #667eea, #764ba2); 
+            color: white; 
+        }
+        
+        .istruzioni { 
+            background: linear-gradient(135deg, #f093fb, #f5576c); 
+            color: white; 
+        }
+        
+        .parametri { 
+            background: linear-gradient(135deg, #4facfe, #00f2fe); 
+            color: white; 
+        }
+        
+        .note { 
+            background: linear-gradient(135deg, #43e97b, #38f9d7); 
+            color: white; 
+        }
+        
+        .section h2 {
+            margin: 0 0 20px 0;
+            font-size: 2em;
+            font-weight: 600;
+        }
+        
+        table { 
+            width: 100%; 
+            border-collapse: collapse; 
+            margin: 20px 0; 
+            background: rgba(255,255,255,0.95); 
+            border-radius: 15px; 
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        th { 
+            background: rgba(0,0,0,0.8); 
+            color: white; 
+            padding: 15px; 
+            text-align: left; 
+            font-weight: 600;
+        }
+        
+        td { 
+            padding: 15px; 
+            border-bottom: 1px solid #eee; 
+            color: #333;
+            font-weight: 500;
+        }
+        
+        tr:nth-child(even) { 
+            background: rgba(240,240,240,0.5); 
+        }
+        
+        tr:hover {
+            background: rgba(102, 126, 234, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .parametro-valore { 
+            font-weight: bold; 
+            color: #2E86AB; 
+            font-size: 1.1em;
+        }
+        
+        .status-ok { 
+            color: #28a745; 
+            font-weight: bold; 
+        }
+        
+        .status-warning { 
+            color: #ffc107; 
+            font-weight: bold; 
+        }
+        
+        .step { 
+            background: rgba(255,255,255,0.2); 
+            margin: 15px 0; 
+            padding: 20px; 
+            border-radius: 15px; 
+            border-left: 5px solid white;
+            transition: all 0.3s ease;
+        }
+        
+        .step:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateX(10px);
+        }
+        
+        .alert { 
+            padding: 20px; 
+            margin: 20px 0; 
+            border-radius: 15px; 
+            backdrop-filter: blur(5px);
+        }
+        
+        .alert-success { 
+            background: rgba(212, 237, 218, 0.9); 
+            border: 2px solid #c3e6cb; 
+            color: #155724; 
+        }
+        
+        .alert-warning { 
+            background: rgba(255, 243, 205, 0.9); 
+            border: 2px solid #ffeaa7; 
+            color: #856404; 
+        }
+        
+        .ingredient-emoji {
+            font-size: 1.2em;
+            margin-right: 8px;
+        }
+        
+        .floating-element {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 2em;
+            opacity: 0.3;
+            animation: float 8s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🌰 Gelato Pistacchio</h1>
+            <p>Ricetta professionale per Ninja Creami Deluxe - Volume: 709ml</p>
+            <img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?w=400&h=250&fit=crop&crop=center" 
+                 alt="Gelato Pistacchio" class="header-image"
+                 onerror="this.src='https://via.placeholder.com/400x250/667eea/ffffff?text=Gelato+Pistacchio'">
+            <div class="nav-buttons">
+                <a href="Creme_Pistacchio_Simulazione.html" class="nav-button">🔬 Vai alla Simulazione Sensoriale</a>
+                <a href="index.html" class="nav-button">🥛 Torna alle Creme</a>
+                <a href="../../../index.html" class="nav-button">🏠 Menu Principale</a>
+            </div>
+        </div>
+
+        <div class="section ingredienti">
+            <div class="floating-element">🥛</div>
+            <h2>📋 Ingredienti</h2>
+            <table>
+                <tr>
+                    <th>Ingrediente</th>
+                    <th>Peso (g)</th>
+                    <th>% su X</th>
+                    <th>Note</th>
+                </tr>
+                <tr>
+                    <td><span class="ingredient-emoji">🥛</span>Latte intero 3,5% grassi</td>
+                    <td><strong>552</strong></td>
+                    <td>71,43%</td>
+                    <td>Base cremosa (+2% evaporazione)</td>
+                </tr>
+                <tr>
+                    <td><span class="ingredient-emoji">🥛</span>Panna LA 35 Trevalli Professional</td>
+                    <td><strong>55</strong></td>
+                    <td>7,14%</td>
+                    <td>35% grassi (+2% evaporazione)</td>
+                </tr>
+                <tr>
+                    <td><span class="ingredient-emoji">🍯</span>Saccarosio</td>
+                    <td><strong>65</strong></td>
+                    <td>8,42%</td>
+                    <td>Dolcezza base</td>
+                </tr>
+                <tr>
+                    <td><span class="ingredient-emoji">🍯</span>Destrosio</td>
+                    <td><strong>45</strong></td>
+                    <td>5,83%</td>
+                    <td>Anticongelante (41% del blend)</td>
+                </tr>
+                <tr>
+                    <td><span class="ingredient-emoji">⚗️</span>Gran Base Pregel</td>
+                    <td><strong>55</strong></td>
+                    <td>7,14%</td>
+                    <td>Stabilizzante professionale</td>
+                </tr>
+                <tr>
+                    <td><span class="ingredient-emoji">🌰</span>Pasta Pistacchissimo 100%</td>
+                    <td><strong>53</strong></td>
+                    <td>-</td>
+                    <td>Aggiungere a 40°C (70g/kg X)</td>
+                </tr>
+            </table>
+            <p><strong>Peso base X:</strong> 772g | <strong>Volume finale:</strong> 709ml</p>
+        </div>
+
+        <div class="section parametri">
+            <div class="floating-element">📊</div>
+            <h2>⚙️ Parametri Tecnici</h2>
+            <table>
+                <tr>
+                    <th>Parametro</th>
+                    <th>Valore Calcolato</th>
+                    <th>Target Ninja Creami</th>
+                    <th>Status</th>
+                </tr>
+                <tr>
+                    <td>POD (%)</td>
+                    <td class="parametro-valore">15,2%</td>
+                    <td>15,0%</td>
+                    <td class="status-ok">✅ Perfetto</td>
+                </tr>
+                <tr>
+                    <td>PAC</td>
+                    <td class="parametro-valore">117</td>
+                    <td>115</td>
+                    <td class="status-ok">✅ Ottimale</td>
+                </tr>
+                <tr>
+                    <td>Solidi Totali (%)</td>
+                    <td class="parametro-valore">37,8%</td>
+                    <td>34-40%</td>
+                    <td class="status-ok">✅ Nel range</td>
+                </tr>
+                <tr>
+                    <td>Grassi (%)</td>
+                    <td class="parametro-valore">8,4%</td>
+                    <td>7-10%</td>
+                    <td class="status-ok">✅ Bilanciato</td>
+                </tr>
+                <tr>
+                    <td>Destrosio/Blend</td>
+                    <td class="parametro-valore">41%</td>
+                    <td>≤45%</td>
+                    <td class="status-ok">✅ Conforme</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="section istruzioni">
+            <div class="floating-element">👨‍🍳</div>
+            <h2>👨‍🍳 Istruzioni Operative</h2>
+            
+            <div class="step">
+                <h3>🔥 Fase 1: Preparazione Base (Monsieur Cuisine)</h3>
+                <p>Versare latte (552g) e panna (55g) freddi nel boccale. Impostare 3 minuti, velocità 1, temperatura 50°C (raggiungerà ~42°C reali).</p>
+            </div>
+            
+            <div class="step">
+                <h3>🍯 Fase 2: Aggiunta Zuccheri</h3>
+                <p>Pre-miscelare saccarosio (65g) + destrosio (45g) + Gran Base (55g). Aggiungere tutto in un colpo, chiudere e ripartire immediatamente.</p>
+            </div>
+            
+            <div class="step">
+                <h3>🌡️ Fase 3A: Pastorizzazione</h3>
+                <p>Impostare temperatura 130°C, velocità 1-2. Portare a 85°C reali e mantenere per 6'30". Monitorare temperatura per HACCP.</p>
+            </div>
+            
+            <div class="step">
+                <h3>🔄 Fase 3B: Mantecazione</h3>
+                <p>Mantenere 85°C per 2 minuti, velocità 3, temperatura impostata 85-90°C per omogeneizzazione finale.</p>
+            </div>
+            
+            <div class="step">
+                <h3>🌰 Fase 4: Aggiunta Pistacchio</h3>
+                <p>Raffreddare a ~40°C. Aggiungere Pasta Pistacchissimo (53g) e mescolare delicatamente a mano per 30 secondi.</p>
+            </div>
+            
+            <div class="step">
+                <h3>❄️ Fase 5: Maturazione e Congelamento</h3>
+                <p>Versare nel bicchiere Ninja Creami (max 709ml). Maturare in frigo a +4°C per 8-12 ore. Congelare verticalmente a -18°C per 14-24 ore.</p>
+            </div>
+            
+            <div class="step">
+                <h3>🍨 Fase 6: Mantecazione Ninja Creami</h3>
+                <p>Ciclo GELATO, poi RE-SPIN se necessario. Se troppo duro, aggiungere 10-15g di latte freddo e RE-SPIN.</p>
+            </div>
+        </div>
+
+        <div class="section note">
+            <div class="floating-element">🔬</div>
+            <h2>📝 Simulazione Sensoriale & Note</h2>
+            
+            <div class="alert alert-success">
+                <strong>🍨 Texture Prevista:</strong> Cremosa e vellutata, con la caratteristica consistenza compatta della Ninja Creami. Il pistacchio conferisce una leggera granulosità piacevole e un colore verde naturale intenso.
+            </div>
+            
+            <div class="alert alert-warning">
+                <strong>👅 Gusto Previsto:</strong> Intenso sapore di pistacchio siciliano, dolcezza equilibrata con note tostate. La Pasta Pistacchissimo 100% garantisce autenticità e intensità aromática superiore.
+            </div>
+            
+            <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=200&fit=crop&crop=center" 
+                 alt="Pistacchi siciliani" style="width: 100%; max-width: 400px; height: 200px; object-fit: cover; border-radius: 15px; margin: 20px 0;"
+                 onerror="this.src='https://via.placeholder.com/400x200/43e97b/ffffff?text=Pistacchi+Siciliani'">
+            
+            <p><strong>🔬 Note Tecniche:</strong></p>
+            <ul>
+                <li><strong>Overrun basso:</strong> Struttura densa tipica Ninja Creami, ideale per esaltare l'intensità del pistacchio</li>
+                <li><strong>Stabilità:</strong> Gran Base Pregel garantisce texture professionale senza cristalli di ghiaccio</li>
+                <li><strong>Bilanciamento:</strong> PAC 117 ottimale per spatolabilità immediata dal congelatore</li>
+                <li><strong>Allergeni:</strong> Contiene latte, panna e frutta a guscio (pistacchi)</li>
+                <li><strong>Conservazione:</strong> Consumare entro 7 giorni, conservare a -18°C</li>
+            </ul>
+            
+            <p><strong>💡 Varianti Suggerite:</strong> Aggiungere 20g di granella di pistacchio tostato dopo il primo ciclo per maggiore croccantezza.</p>
+        </div>
+    </div>
+</body>
+</html>

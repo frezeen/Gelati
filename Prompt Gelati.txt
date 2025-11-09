@@ -1,0 +1,564 @@
+PROMPT OPERATIVO PER CREAZIONE RICETTE GELATO NINJA CREAMI DELUXE
+
+=================================================================================
+ISTRUZIONI RIGIDE PER L'IA - RISPETTO ASSOLUTO DELLE REGOLE
+=================================================================================
+
+QUANDO L'UTENTE RICHIEDE UNA RICETTA DI GELATO, DEVI:
+
+1. LEGGERE OBBLIGATORIAMENTE IL FILE "regole gelato agosto 2025 rev 2.txt"
+2. SEGUIRE RIGOROSAMENTE OGNI SINGOLA REGOLA SENZA ECCEZIONI
+3. NON IMPROVVISARE MAI NULLA
+4. NON SUPPORRE MAI NULLA  
+5. NON INVENTARE MAI PARAMETRI
+6. USARE SOLO I VALORI DI DEFAULT SPECIFICATI NELLE REGOLE
+
+=================================================================================
+ALGORITMO OPERATIVO OBBLIGATORIO
+=================================================================================
+
+STEP 1 - ANALISI E CATALOGAZIONE AUTOMATICA:
+- Identifica il tipo di gelato richiesto dall'utente
+- Determina categoria automatica per directory:
+  * CREME: latte+panna+aromi (vaniglia, nocciola, pistacchio, caffè, zuppa inglese)
+  * FRUTTA: frutta fresca (fragola, pesca, limone, frutti di bosco)
+  * SORBETTI: base acqua+zuccheri+frutta (senza latte/panna)
+  * SPECIALI: ingredienti particolari (alcol, spezie, salati)
+  * CIOCCOLATO: base cioccolato/cacao (fondente, latte, bianco)
+- Crea directory `/Ricette/Gelati/[Categoria]/`
+- Cerca immagini specifiche del gusto su internet (non generiche!)
+- Identifica ingredienti caratterizzanti per ricerca immagini
+
+STEP 2 - APPLICAZIONE REGOLE TECNICHE:
+- Applica ALGORITMO STEP-BY-STEP dalle regole (Regola 1)
+- Calcola X usando bilanciamento volumetrico inverso (Regola 8)
+- Applica struttura base appropriata (Regola 2 o 13)
+- Bilancia POD/PAC con algoritmo automatico (Regola 7)
+- Usa SOLO coefficienti di default dalle tabelle
+
+STEP 3 - CALCOLI OBBLIGATORI:
+- Volume aggiunte a freddo con densità precise dalle tabelle
+- Peso base X con formula corretta
+- Bilanciamento zuccheri automatico per target POD/PAC
+- Controlli di validazione automatici
+- Compensazione evaporazione FISSA: +2% solo su latte e panna
+
+STEP 4 - GENERAZIONE FILE E AGGIORNAMENTO AUTOMATICO:
+- Crea file RICETTA: `[Categoria]_[NomeGusto]_Ricetta.html`
+- Crea file SIMULAZIONE: `[Categoria]_[NomeGusto]_Simulazione.html`
+- Collega i due file con pulsanti di navigazione bidirezionale
+- Usa immagini specifiche del gusto (mai generiche!)
+- Applica design moderno con animazioni CSS
+
+STEP 5 - AGGIORNAMENTO INDEX AUTOMATICO OBBLIGATORIO:
+- Aggiorna `/Ricette/Gelati/[Categoria]/index.html` aggiungendo la nuova ricetta
+- Aggiorna `index.html` principale incrementando il contatore ricette della categoria
+- Aggiorna `index.html` principale incrementando il contatore "Ricette Totali"
+- Se categoria nuova: crea nuovo `index.html` categoria + aggiungi card nel menu principale
+- Mantieni ordine alfabetico nelle liste ricette
+- Usa template card standardizzato per ogni ricetta
+
+GESTIONE INGREDIENTI OBBLIGATORIA:
+✅ SE INGREDIENTE È NELLE TABELLE → USA OBBLIGATORIAMENTE QUELLO
+   - Vaniglia → Pasta Vaniglia Antica Pregel (25g/kg X, zuccheri 45%)
+   - Nocciola → Pasta Nocciola 99% Pregel (70g/kg X, zuccheri 0%)
+   - Pistacchio → Pasta Pistacchissimo 100% (70g/kg X, zuccheri 0%)
+   - Caffè → Pasta Caffè Costa d'oro (70g/kg X, zuccheri 45%)
+   - Panna → SOLO Panna LA 35 Trevalli Professional UHT (35g/100ml grassi, 2,1g proteine, 3,1g lattosio, densità 1,008)
+
+❌ SE INGREDIENTE NON È NELLE TABELLE → CALCOLO DINAMICO OBBLIGATORIO:
+
+🚨 **REGOLA ASSOLUTA: TUTTO È PER NINJA CREAMI DELUXE!** 🚨
+OGNI calcolo, parametro, target e limite DEVE essere adattato per:
+- Volume fisso 709ml
+- Overrun basso (struttura compatta)
+- Congelamento verticale 14-24h
+- Mantecazione meccanica aggressiva
+- Bicchiere rigido (no espansione)
+
+❌ NON usare MAI parametri per gelatiere tradizionali o mantecatori professionali!
+
+**STEP A - RICERCA PARAMETRI TECNICI:**
+- Cerca composizione nutrizionale completa (zuccheri, grassi, proteine, acqua)
+- Trova densità specifica o calcolala da composizione
+- Identifica tipo di zuccheri presenti (saccarosio, fruttosio, glucosio, ecc.)
+- Verifica pH se ingrediente acido
+
+**STEP B - CALCOLO COEFFICIENTI POD/PAC:**
+- POD = Σ(zucchero_i × coefficiente_POD_i) / peso_totale_ingrediente
+- PAC = Σ(zucchero_i × coefficiente_PAC_i) / peso_totale_ingrediente
+- Usa coefficienti di default per ogni tipo di zucchero identificato
+
+**STEP C - ADATTAMENTO TARGET SPECIFICI (NINJA CREAMI DELUXE):**
+- Cioccolato fondente >70%: POD -1%, PAC +10 (overrun basso = più intenso)
+- Ingredienti alcolici: PAC +20-40 (congelamento verticale = più PAC necessario)
+- Ingredienti salati: POD -2%, PAC +15 (mantecazione aggressiva = più spatolabilità)
+- Ingredienti acidi (pH<4): target PAC +10-20 (struttura compatta = più anticongelante)
+- Ingredienti grassi >20%: target grassi totali max 12% (overrun basso = limite grassi più alto)
+- Ingredienti fibrosi: PAC +5-10 (mantecazione meccanica = serve più morbidezza)
+
+**STEP D - LIMITI OPERATIVI DINAMICI (NINJA CREAMI DELUXE):**
+- Oli essenziali: max 0,1-0,3% su peso finale (mantecazione aggressiva = dispersione intensa)
+- Ingredienti acidi: max 15% se pH<3,5 (bicchiere rigido = no compensazione volume)
+- Alcol: max 3% su peso finale (congelamento lento = PAC critico)
+- Ingredienti salati: max 2% su peso finale (overrun basso = sapore concentrato)
+- Polveri assorbenti (cacao, matcha): compensare liquidi +5-10% (volume 709ml fisso)
+- Ingredienti duri (noci, biscotti): max 8% peso finale (lame Creami = limite frantumazione)
+- Ingredienti oleosi: max 10% peso finale (overrun basso = rischio separazione)
+
+**FONTI AFFIDABILI OBBLIGATORIE:**
+1. Tabelle nutrizionali ufficiali produttore
+2. Database USDA/CREA alimentari
+3. Letteratura scientifica gelateria (Goff, Hartel)
+4. Siti professionali gelateria (MEC3, Carpigiani, Bravo)
+
+STEP 4 - VERIFICA COERENZA:
+- Tutti i controlli di validazione devono essere OK
+- Parametri entro i limiti operativi specificati
+- Somma percentuali = 100%
+- Volume finale = 709ml ± 2ml
+
+=================================================================================
+REGOLE ASSOLUTE - ZERO TOLLERANZA
+=================================================================================
+
+❌ NON PUOI MAI:
+- Saltare anche solo una riga delle regole
+- Improvvisare dosaggi o parametri per ingredienti in tabella
+- Usare valori diversi da quelli nelle tabelle per ingredienti listati
+- Modificare le percentuali standard senza calcoli matematici
+- Ignorare i controlli di validazione
+- Superare i limiti operativi (destrosio ≤45%, eritritolo ≤35%, ecc.)
+- Usare ingredienti alternativi se quello richiesto è nelle tabelle
+
+PRIORITÀ ASSOLUTE PER VALORI MULTIPLI:
+- Target POD/PAC: USA i valori dell'ALGORITMO STEP-BY-STEP (fine documento)
+- Densità: USA i valori delle TABELLE DI LOOKUP COMPLETE (fine documento)  
+- Coefficienti: USA i VALORI DI DEFAULT (non i range)
+- Evaporazione: USA +2% FISSO su latte e panna
+- Struttura base: USA percentuali STANDARD (71,43% latte, 7,14% panna, ecc.)
+
+✅ DEVI SEMPRE:
+- Seguire l'algoritmo step-by-step completo
+- Usare i valori di default precisi dalle tabelle
+- Applicare tutti i controlli di coerenza
+- Rispettare i target POD/PAC specifici per tipo gelato
+- Fornire calcoli matematici verificabili
+- Includere simulazione sensoriale predittiva
+
+=================================================================================
+OUTPUT OBBLIGATORIO - FORMATO HTML MODERNO E ANIMATO
+=================================================================================
+
+DEVI PRODURRE UN FILE HTML COMPLETO CON:
+
+**REQUISITI DESIGN OBBLIGATORI:**
+- Font Google: Poppins (importare da Google Fonts)
+- Background animato con gradienti che cambiano colore
+- Sezioni con hover effects e transizioni smooth
+- Tabelle con testo NERO su sfondo BIANCO (leggibilità perfetta)
+- Immagini del gelato da Unsplash (libere da copyright)
+- Emoji per ingredienti e icone decorative
+- Animazioni CSS per elementi fluttuanti
+- Effetti di glow e ombre per profondità
+- Backdrop blur per effetto vetro
+- Hover effects su tutti gli elementi interattivi
+
+STRUTTURA HTML:
+```html
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ricetta Gelato [NOME GUSTO] - Ninja Creami Deluxe</title>
+    <style>
+        /* CSS MODERNO CON ANIMAZIONI E GRADIENTI */
+    </style>
+</head>
+<body>
+    <!-- CONTENUTO COMPLETO CON IMMAGINI E ANIMAZIONI -->
+</body>
+</html>
+```
+
+AUTOMAZIONE INDEX OBBLIGATORIA:
+
+**TEMPLATE CARD RICETTA (per index categoria):**
+```html
+<div class="recipe-card">
+    <img src="[IMMAGINE_UNSPLASH]" alt="[NOME_GUSTO]" class="recipe-image"
+         onerror="this.src='https://via.placeholder.com/350x200/[COLORE]/ffffff?text=[NOME_GUSTO]'">
+    <div class="recipe-content">
+        <h3 class="recipe-title">🍨 [NOME_GUSTO]</h3>
+        <p class="recipe-description">[DESCRIZIONE_BREVE]</p>
+        <div class="recipe-params">
+            <span class="param">POD: [POD]%</span>
+            <span class="param">PAC: [PAC]</span>
+        </div>
+        <div class="recipe-buttons">
+            <a href="[Categoria]_[NomeGusto]_Ricetta.html" class="btn btn-primary">📋 Ricetta</a>
+            <a href="[Categoria]_[NomeGusto]_Simulazione.html" class="btn btn-secondary">🔬 Simulazione</a>
+        </div>
+    </div>
+</div>
+```
+
+**AGGIORNAMENTO CONTATORI AUTOMATICO:**
+- Conta ricette esistenti in `/Ricette/Gelati/[Categoria]/`
+- Aggiorna "X ricette disponibili" nell'index principale
+- Aggiorna "Ricette Totali" sommando tutte le categorie
+- Se prima ricetta categoria: cambia da "Prossimamente" a "1 ricetta disponibile"
+
+SEZIONI OBBLIGATORIE:
+
+1. **HEADER ANIMATO** con nome gelato e immagine principale
+2. **TABELLA INGREDIENTI** con emoji, pesi precisi e testo NERO leggibile
+3. **PARAMETRI TECNICI** con indicatori colorati di stato
+4. **ISTRUZIONI ANIMATE** step-by-step con hover effects
+5. **CALCOLI TECNICI** in tabelle con transizioni
+6. **SIMULAZIONE SENSORIALE** con immagini aggiuntive
+7. **NOTE TECNICHE** con elementi fluttuanti
+8. **IMMAGINI OBBLIGATORIE** da Unsplash (libere da copyright)
+
+**IMMAGINI OBBLIGATORIE (Unsplash - libere da copyright):**
+- Header principale: gelato del gusto richiesto
+- Sezione ingredienti: ingredienti tradizionali del dolce
+- Sezione note: processo di preparazione o risultato finale
+- Fallback: placeholder colorati con testo descrittivo
+- Formato: 400x250px per header, 400x200px per sezioni
+
+**STILE CSS MODERNO OBBLIGATORIO:**
+- Font: Google Fonts Poppins (importare obbligatoriamente)
+- Background: gradienti animati che cambiano colore
+- Sezioni: gradienti colorati con hover effects
+- Tabelle: testo NERO su sfondo BIANCO per leggibilità
+- Animazioni: elementi fluttuanti, glow effects, transizioni smooth
+- Effetti: backdrop-filter blur, box-shadow profonde, border-radius arrotondati
+- Emoji: obbligatorie per ingredienti (🥛🍯🌟🍷🍫💧🍪)
+- Padding celle tabelle: 12px
+- Margin sezioni: 20px 0
+
+TABELLE RICHIESTE:
+- Tabella ingredienti con colonne: Ingrediente | Peso (g) | % su X | Note
+- Tabella parametri tecnici: POD | PAC | Solidi Totali | Grassi
+- Tabella controlli validazione con ✅/❌
+- Tabella istruzioni operative con tempi/temperature
+
+=================================================================================
+ESEMPIO DI RICHIESTA UTENTE E RISPOSTA
+=================================================================================
+
+UTENTE: "Voglio una ricetta gelato zuppa inglese"
+
+TUA RISPOSTA DEVE:
+1. Leggere le regole complete
+2. Identificare: gelato crema con savoiardi, crema pasticcera, alchermes
+3. Calcolare ricetta base crema + aggiunte specifiche
+4. Bilanciare POD/PAC per il tipo crema
+5. Produrre HTML completo con tutti gli elementi richiesti
+
+=================================================================================
+CONTROLLO QUALITÀ FINALE
+=================================================================================
+
+PRIMA DI FORNIRE LA RICETTA, VERIFICA:
+- ✅ Hai letto tutto il file regole?
+- ✅ Hai seguito l'algoritmo step-by-step completo?
+- ✅ Tutti i calcoli sono basati sui valori di default delle tabelle?
+- ✅ I controlli di validazione sono tutti OK?
+- ✅ L'HTML è completo con tutte le sezioni richieste?
+- ✅ Le tabelle sono colorate e ben formattate?
+- ✅ Le istruzioni sono dettagliate e professionali?
+
+SE ANCHE SOLO UNA RISPOSTA È NO, RICOMINCIA DA CAPO!
+
+=================================================================================
+MESSAGGIO FINALE PER L'IA
+=================================================================================
+
+RICORDA: Stai creando ricette per gelato artigianale professionale. Ogni grammo conta, ogni parametro è critico. L'utente si aspetta precisione assoluta e risultati perfetti. Non c'è spazio per approssimazioni o improvvisazioni.
+
+LE REGOLE SONO LEGGE - RISPETTALE TUTTE, SEMPRE, SENZA ECCEZIONI!
+=====
+============================================================================
+TEMPLATE HTML OBBLIGATORIO - COPIA ESATTO
+=================================================================================
+
+USA QUESTO TEMPLATE ESATTO (sostituisci solo [VARIABILI]):
+
+```html
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ricetta Gelato [NOME_GUSTO] - Ninja Creami Deluxe</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 20px; background: #f5f5f5; }
+        .container { max-width: 1200px; margin: 0 auto; background: white; border-radius: 12px; box-shadow: 0 6px 12px rgba(0,0,0,0.15); overflow: hidden; }
+        .header { background: linear-gradient(135deg, #2E86AB, #1a5f7a); color: white; padding: 30px; text-align: center; }
+        .header h1 { margin: 0; font-size: 2.5em; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
+        .section { margin: 20px; padding: 20px; border-radius: 8px; }
+        .ingredienti { background: linear-gradient(135deg, #A23B72, #7a2d56); color: white; }
+        .istruzioni { background: linear-gradient(135deg, #F18F01, #c7730a); color: white; }
+        .parametri { background: linear-gradient(135deg, #C73E1D, #9a2f16); color: white; }
+        .note { background: linear-gradient(135deg, #6A994E, #527a3a); color: white; }
+        table { width: 100%; border-collapse: collapse; margin: 15px 0; background: white; border-radius: 8px; overflow: hidden; }
+        th { background: rgba(0,0,0,0.8); color: white; padding: 12px; text-align: left; }
+        td { padding: 12px; border-bottom: 1px solid #ddd; }
+        tr:nth-child(even) { background: #f9f9f9; }
+        .parametro-valore { font-weight: bold; color: #2E86AB; }
+        .alert { padding: 10px; margin: 10px 0; border-radius: 5px; }
+        .alert-success { background: #d4edda; border: 1px solid #c3e6cb; color: #155724; }
+        .alert-warning { background: #fff3cd; border: 1px solid #ffeaa7; color: #856404; }
+        .step { background: rgba(255,255,255,0.2); margin: 10px 0; padding: 15px; border-radius: 8px; border-left: 4px solid white; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🍨 Gelato [NOME_GUSTO]</h1>
+            <p>Ricetta professionale per Ninja Creami Deluxe - Volume: 709ml</p>
+        </div>
+
+        <div class="section ingredienti">
+            <h2>📋 Ingredienti</h2>
+            <table>
+                <tr><th>Ingrediente</th><th>Peso (g)</th><th>% su X</th><th>Note</th></tr>
+                [TABELLA_INGREDIENTI]
+            </table>
+        </div>
+
+        <div class="section parametri">
+            <h2>⚙️ Parametri Tecnici</h2>
+            <table>
+                <tr><th>Parametro</th><th>Valore Calcolato</th><th>Target</th><th>Status</th></tr>
+                <tr><td>POD (%)</td><td class="parametro-valore">[POD_CALC]</td><td>[POD_TARGET]</td><td>[POD_STATUS]</td></tr>
+                <tr><td>PAC</td><td class="parametro-valore">[PAC_CALC]</td><td>[PAC_TARGET]</td><td>[PAC_STATUS]</td></tr>
+                <tr><td>Solidi Totali (%)</td><td class="parametro-valore">[SOLIDI_CALC]</td><td>34-40%</td><td>[SOLIDI_STATUS]</td></tr>
+                <tr><td>Grassi (%)</td><td class="parametro-valore">[GRASSI_CALC]</td><td>7-10%</td><td>[GRASSI_STATUS]</td></tr>
+            </table>
+        </div>
+
+        <div class="section istruzioni">
+            <h2>👨‍🍳 Istruzioni Operative</h2>
+            [STEPS_ISTRUZIONI]
+        </div>
+
+        <div class="section note">
+            <h2>📝 Simulazione Sensoriale & Note</h2>
+            <div class="alert alert-success">
+                <strong>Texture Prevista:</strong> [TEXTURE_DESCRIZIONE]
+            </div>
+            <div class="alert alert-warning">
+                <strong>Gusto Previsto:</strong> [GUSTO_DESCRIZIONE]
+            </div>
+            <p><strong>Note Tecniche:</strong> [NOTE_TECNICHE]</p>
+        </div>
+    </div>
+</body>
+</html>
+```
+
+=================================================================================
+DECISIONI AUTOMATICHE OBBLIGATORIE
+=================================================================================
+
+ELIMINA OGNI SOGGETTIVITÀ - USA QUESTE REGOLE AUTOMATICHE:
+
+**CALCOLI DINAMICI PER INGREDIENTI COMPLESSI:**
+
+**GELATI MULTI-GUSTO:**
+- Calcola POD/PAC per ogni componente separatamente
+- Media ponderata finale basata su percentuali in peso
+- Adatta target: POD ±0,5%, PAC ±5 dalla media
+
+**INGREDIENTI CON ALCOL:**
+- Calcola PAC aggiuntivo: gradazione × 2,5 (es. 40° = +100 PAC)
+- Limita alcol totale: max 3% peso finale
+- Compensa POD: -0,5% per ogni 1% alcol
+
+**INGREDIENTI ACIDI (pH<4,5):**
+- Misura/stima pH dell'ingrediente
+- Se pH<3,5: limita a max 10% peso finale
+- Adatta PAC target: +5 per ogni 0,5 di pH sotto 4,0
+- Considera tamponi: aumenta latte/panna +5-10%
+
+**CIOCCOLATO E CACAO:**
+- Fondente >70%: POD target -1%, PAC +10, grassi +2%
+- Al latte: POD target +0,5%, PAC standard
+- Cacao amaro: compensa amaro con +1% POD target
+- Polveri: aggiungi liquidi +5% per assorbimento
+
+**PERCENTUALE PUREA/PEZZI (Regola 10):**
+- Fragola, lampone, mirtillo: 60% purea, 40% pezzi
+- Pesca, albicocca, mango: 70% purea, 30% pezzi  
+- Banana, kiwi: 80% purea, 20% pezzi
+- Default altri frutti: 70% purea, 30% pezzi
+
+**ADATTAMENTO GRASSI (Regola 2):**
+- Se overrun basso previsto (gelati densi): +2% panna
+- Se texture cremosa richiesta: +3% panna
+- Default: usa percentuali standard
+
+**DOSAGGIO BOLERO (Regola 12):**
+- Aromi delicati (vaniglia, latte): 0,30%
+- Aromi medi (frutta): 0,40%
+- Aromi intensi (caffè, cioccolato): 0,45%
+
+**TIPO GELATO AUTO-IDENTIFICAZIONE:**
+- Contiene latte+panna+aromi paste Pregel = Crema classica
+- Contiene latte+panna+frutta = Gelato alla frutta
+- Contiene latte+acqua = Gelato fresco
+- Solo acqua+zuccheri+frutta = Sorbetto
+
+**TARGET POD/PAC AUTOMATICI (base + adattamenti dinamici):**
+- Crema classica: POD 15%, PAC 115
+- Vaniglia: POD 15%, PAC 110
+- Caffè: POD 15%, PAC 125
+- Gelato fresco: POD 15%, PAC 130
+- Sorbetto: POD 19%, PAC 240
+
+**ADATTAMENTI AUTOMATICI AI TARGET (NINJA CREAMI DELUXE):**
+- +Cioccolato fondente: POD -1%, PAC +10 (overrun basso = intensità maggiore)
+- +Alcol (per ogni 1%): POD -0,5%, PAC +25 (congelamento verticale = più anticongelante)
+- +Ingredienti acidi: PAC +10-20 (mantecazione aggressiva = serve più morbidezza)
+- +Ingredienti salati: POD -2%, PAC +15 (struttura compatta = sapore concentrato)
+- +Frutta molto dolce (>15% zuccheri): POD -1% (overrun basso = dolcezza percepita maggiore)
+- +Frutta poco dolce (<8% zuccheri): POD +1% (compensazione per intensità ridotta)
+- +Ingredienti grassi extra: PAC +5-10 (overrun basso = serve più spatolabilità)
+- +Ingredienti proteici: PAC +5 (mantecazione meccanica = struttura più densa)
+
+=================================================================================
+CONTROLLI FINALI OBBLIGATORI
+=================================================================================
+
+PRIMA DI FORNIRE LA RICETTA, VERIFICA MATEMATICAMENTE:
+
+1. ✅ Volume finale = 709ml ± 2ml (non ± 5ml)
+2. ✅ POD entro ±0,3% del target (non ±0,5%)
+3. ✅ PAC entro ±3 del target (non ±5)
+4. ✅ Somma percentuali base = 100,0% ± 0,1%
+5. ✅ Tutti gli ingredienti in tabella usano valori obbligatori
+6. ✅ HTML usa template esatto fornito
+7. ✅ Calcoli mostrati e verificabili
+
+SE ANCHE SOLO UN CONTROLLO FALLISCE → RICOMINCIA TUTTO DA CAPO!
+========
+=========================================================================
+SISTEMA CATALOGAZIONE E COLLEGAMENTO AUTOMATICO
+=================================================================================
+
+**PROCESSO AUTOMATICO COMPLETO:**
+
+1. **ANALISI AUTOMATICA CATEGORIA:**
+   - Creme: latte+panna+aromi (vaniglia, nocciola, pistacchio, caffè, zuppa inglese, tiramisù)
+   - Frutta: frutta fresca+base cremosa (fragola, pesca, limone, frutti di bosco)
+   - Sorbetti: acqua+zuccheri+frutta (senza latte/panna)
+   - Cioccolato: cioccolato/cacao come ingrediente principale
+   - Speciali: alcol, spezie, salati, vegani, senza zucchero
+
+2. **CREAZIONE DIRECTORY AUTOMATICA:**
+   - Crea `/Ricette/Gelati/[Categoria]/` se non esiste
+   - Aggiorna indice categoria con nuova ricetta
+   - Aggiorna statistiche catalogo generale
+
+3. **RICERCA IMMAGINI INTELLIGENTE:**
+   - Cerca "[nome gelato] ice cream" su Unsplash
+   - Cerca ingredienti specifici: "alchermes savoiardi" per Zuppa Inglese
+   - Cerca varianti tradizionali: "italian trifle dessert"
+   - Usa ID Unsplash specifici quando disponibili
+   - Fallback su placeholder tematici colorati
+
+4. **GENERAZIONE FILE DOPPIA OBBLIGATORIA:**
+   - `[Categoria]_[NomeGusto]_Ricetta.html` - Ricetta completa
+   - `[Categoria]_[NomeGusto]_Simulazione.html` - Analisi sensoriale
+   - Collegamenti bidirezionali con pulsanti navigazione
+   - Link al catalogo generale e categoria
+
+5. **AGGIORNAMENTO INDICI:**
+   - Aggiorna `/Ricette/Gelati/[Categoria]/index.html`
+   - Aggiorna `/index.html` con nuove statistiche
+   - Mantiene coerenza visiva e funzionale
+
+**TEMPLATE NOMI FILE AUTOMATICI:**
+- Zuppa Inglese → `Creme_Zuppa_Inglese_Ricetta.html`
+- Vaniglia → `Creme_Vaniglia_Ricetta.html`
+- Fragola → `Frutta_Fragola_Ricetta.html`
+- Limone → `Sorbetti_Limone_Ricetta.html`
+- Fondente → `Cioccolato_Fondente_Ricetta.html`
+
+**IMMAGINI SPECIFICHE OBBLIGATORIE:**
+- Header ricetta: gelato del gusto specifico
+- Header simulazione: ingredienti tradizionali
+- Sezioni: processo o risultato finale
+- SEMPRE cercare online prima di usare placeholder
+- Formato Unsplash: `https://images.unsplash.com/photo-[ID]?w=400&h=250&fit=crop&crop=center`
+
+**CONTROLLI FINALI ESTESI:**
+- ✅ Directory categoria creata
+- ✅ File ricetta e simulazione generati
+- ✅ Collegamenti bidirezionali funzionanti
+- ✅ Immagini specifiche del gusto (non generiche)
+- ✅ Indici categoria aggiornati
+- ✅ Statistiche catalogo aggiornate
+- ✅ Design coerente con template
+- ✅ Tutti i controlli qualità precedenti
+
+**OGNI NUOVA RICETTA DEVE SEGUIRE QUESTO PROCESSO COMPLETO!**
+=====
+============================================================================
+AUTOMAZIONE COMPLETA SISTEMA NAVIGAZIONE
+=================================================================================
+
+QUANDO CREI UNA NUOVA RICETTA, DEVI AUTOMATICAMENTE:
+
+1. **AGGIORNARE INDEX CATEGORIA:**
+   - Aprire `/Ricette/Gelati/[Categoria]/index.html`
+   - Aggiungere nuova card ricetta nella sezione `recipes-grid`
+   - Rimuovere card "Prossimamente" se è la prima ricetta
+   - Mantenere ordine alfabetico
+   - Aggiornare contatore ricette nell'header
+
+2. **AGGIORNARE INDEX PRINCIPALE:**
+   - Aprire `index.html` principale
+   - Aggiornare contatore nella card categoria (es. "2 ricette disponibili")
+   - Aggiornare "Ricette Totali" nelle statistiche
+   - Se categoria nuova: creare nuova card categoria
+
+3. **TEMPLATE CARD RICETTA STANDARDIZZATO:**
+```html
+<div class="recipe-card">
+    <img src="[IMMAGINE_SPECIFICA_UNSPLASH]" 
+         alt="[NOME_GUSTO]" class="recipe-image"
+         onerror="this.src='https://via.placeholder.com/350x200/[COLORE_CATEGORIA]/ffffff?text=[NOME_GUSTO]'">
+    <div class="recipe-content">
+        <h3 class="recipe-title">🍨 [NOME_GUSTO]</h3>
+        <p class="recipe-description">[DESCRIZIONE_2_RIGHE]</p>
+        <div class="recipe-stats">
+            <span>📊 POD: [POD_CALCOLATO]%</span>
+            <span>🧊 PAC: [PAC_CALCOLATO]</span>
+            <span>🥛 Grassi: [GRASSI_CALCOLATI]%</span>
+        </div>
+        <div class="recipe-buttons">
+            <a href="[Categoria]_[NomeGusto]_Ricetta.html" class="btn btn-primary">📋 Ricetta</a>
+            <a href="[Categoria]_[NomeGusto]_Simulazione.html" class="btn btn-secondary">🔬 Simulazione</a>
+        </div>
+    </div>
+</div>
+```
+
+4. **COLORI CATEGORIA PER PLACEHOLDER:**
+   - CREME: #667eea
+   - FRUTTA: #f093fb  
+   - SORBETTI: #4facfe
+   - CIOCCOLATO: #8B4513
+   - SPECIALI: #43e97b
+
+5. **CONTEGGIO AUTOMATICO:**
+   - Conta file `*_Ricetta.html` in ogni categoria
+   - Aggiorna tutti i contatori di conseguenza
+   - Mantieni coerenza tra index categoria e principale
+
+QUESTA AUTOMAZIONE È OBBLIGATORIA PER OGNI NUOVA RICETTA!

@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gelati alle Creme - Ninja Creami Deluxe</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; }
+        
+        body { 
+            font-family: 'Poppins', sans-serif; 
+            margin: 0; 
+            padding: 20px; 
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            animation: backgroundShift 10s ease-in-out infinite alternate;
+        }
+        
+        @keyframes backgroundShift {
+            0% { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+            100% { background: linear-gradient(135deg, #764ba2 0%, #667eea 100%); }
+        }
+        
+        .container { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            background: rgba(255,255,255,0.95); 
+            border-radius: 20px; 
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1); 
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+        
+        .header { 
+            background: linear-gradient(135deg, #667eea, #764ba2); 
+            color: white; 
+            padding: 40px; 
+            text-align: center; 
+        }
+        
+        .header h1 { 
+            margin: 0; 
+            font-size: 3em; 
+            font-weight: 700;
+        }
+        
+        .nav-button {
+            display: inline-block;
+            padding: 12px 25px;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            margin: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-button:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-2px);
+        }
+        
+        .recipes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            padding: 40px;
+        }
+        
+        .recipe-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .recipe-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+        
+        .recipe-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .recipe-content {
+            padding: 25px;
+        }
+        
+        .recipe-title {
+            font-size: 1.5em;
+            font-weight: 600;
+            margin: 0 0 10px 0;
+            color: #333;
+        }
+        
+        .recipe-description {
+            color: #666;
+            margin: 0 0 20px 0;
+            line-height: 1.6;
+        }
+        
+        .recipe-stats {
+            display: flex;
+            justify-content: space-between;
+            margin: 15px 0;
+            font-size: 0.9em;
+            color: #888;
+        }
+        
+        .recipe-buttons {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .btn {
+            flex: 1;
+            padding: 10px;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+        }
+        
+        .btn-secondary {
+            background: linear-gradient(135deg, #f093fb, #f5576c);
+            color: white;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🥛 Gelati alle Creme</h1>
+            <p>Base latte e panna con aromi classici - 5 ricette disponibili</p>
+            <a href="../../../index.html" class="nav-button">🏠 Torna al Catalogo</a>
+        </div>
+        
+        <div class="recipes-grid">
+            <div class="recipe-card">
+                <img src="https://images.unsplash.com/photo-1567206563064-6f60f40a2b57?w=350&h=200&fit=crop&crop=center" 
+                     alt="Nocciola" class="recipe-image"
+                     onerror="this.src='https://via.placeholder.com/350x200/8B4513/ffffff?text=Nocciola'">
+                <div class="recipe-content">
+                    <h3 class="recipe-title">🌰 Nocciola</h3>
+                    <p class="recipe-description">
+                        Gelato alla nocciola con Pasta Nocciola 99% Pregel. 
+                        Sapore autentico e intenso delle nocciole tostate.
+                    </p>
+                    <div class="recipe-stats">
+                        <span>📊 POD: 16,3%</span>
+                        <span>🧊 PAC: 115</span>
+                        <span>🥛 Grassi: 8,4%</span>
+                    </div>
+                    <div class="recipe-buttons">
+                        <a href="Creme_Nocciola_Ricetta.html" class="btn btn-primary">📋 Ricetta</a>
+                        <a href="Creme_Nocciola_Simulazione.html" class="btn btn-secondary">🔬 Simulazione</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="recipe-card">
+                <img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?w=350&h=200&fit=crop&crop=center" 
+                     alt="Pistacchio" class="recipe-image"
+                     onerror="this.src='https://via.placeholder.com/350x200/667eea/ffffff?text=Pistacchio'">
+                <div class="recipe-content">
+                    <h3 class="recipe-title">🌰 Pistacchio</h3>
+                    <p class="recipe-description">
+                        Gelato al pistacchio con Pasta Pistacchissimo 100% Pregel. 
+                        Intenso sapore siciliano e colore verde naturale autentico.
+                    </p>
+                    <div class="recipe-stats">
+                        <span>📊 POD: 15,2%</span>
+                        <span>🧊 PAC: 117</span>
+                        <span>🥛 Grassi: 8,4%</span>
+                    </div>
+                    <div class="recipe-buttons">
+                        <a href="Creme_Pistacchio_Ricetta.html" class="btn btn-primary">📋 Ricetta</a>
+                        <a href="Creme_Pistacchio_Simulazione.html" class="btn btn-secondary">🔬 Simulazione</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="recipe-card">
+                <img src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=350&h=200&fit=crop&crop=center" 
+                     alt="Zuppa Inglese" class="recipe-image"
+                     onerror="this.src='https://via.placeholder.com/350x200/667eea/ffffff?text=Zuppa+Inglese'">
+                <div class="recipe-content">
+                    <h3 class="recipe-title">🍨 Zuppa Inglese</h3>
+                    <p class="recipe-description">
+                        Crema vanigliata con variegatura alchermes, savoiardi e cacao. 
+                        Un classico della pasticceria italiana reinterpretato per Ninja Creami.
+                    </p>
+                    <div class="recipe-stats">
+                        <span>📊 POD: 13,5%</span>
+                        <span>🧊 PAC: 56</span>
+                        <span>🥛 Grassi: 8,4%</span>
+                    </div>
+                    <div class="recipe-buttons">
+                        <a href="Creme_Zuppa_Inglese_Ricetta.html" class="btn btn-primary">📋 Ricetta</a>
+                        <a href="Creme_Zuppa_Inglese_Simulazione.html" class="btn btn-secondary">🔬 Simulazione</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="recipe-card">
+                <img src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=350&h=200&fit=crop&crop=center" 
+                     alt="Ricotta e Vaniglia" class="recipe-image"
+                     onerror="this.src='https://via.placeholder.com/350x200/667eea/ffffff?text=Ricotta+Vaniglia'">
+                <div class="recipe-content">
+                    <h3 class="recipe-title">🧀 Ricotta e Vaniglia</h3>
+                    <p class="recipe-description">
+                        Crema delicata di ricotta romana fresca con vaniglia naturale. 
+                        Un abbinamento classico della tradizione laziale.
+                    </p>
+                    <div class="recipe-stats">
+                        <span>📊 POD: 15,1%</span>
+                        <span>🧊 PAC: 113</span>
+                        <span>🥛 Grassi: 9,1%</span>
+                    </div>
+                    <div class="recipe-buttons">
+                        <a href="Creme_Ricotta_Vaniglia_Ricetta.html" class="btn btn-primary">📋 Ricetta</a>
+                        <a href="Creme_Ricotta_Vaniglia_Simulazione.html" class="btn btn-secondary">🔬 Simulazione</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="recipe-card">
+                <img src="https://images.unsplash.com/photo-1517487881594-2787fef5ebf7?w=350&h=200&fit=crop&crop=center" 
+                     alt="Caffè" class="recipe-image"
+                     onerror="this.src='https://via.placeholder.com/350x200/6F4E37/ffffff?text=Caffe'">
+                <div class="recipe-content">
+                    <h3 class="recipe-title">☕ Caffè</h3>
+                    <p class="recipe-description">
+                        Gelato al caffè intenso con Pasta Caffè Costa d'oro Pregel. 
+                        Aroma autentico di espresso italiano.
+                    </p>
+                    <div class="recipe-stats">
+                        <span>📊 POD: 15,4%</span>
+                        <span>🧊 PAC: 127</span>
+                        <span>🥛 Grassi: 8,2%</span>
+                    </div>
+                    <div class="recipe-buttons">
+                        <a href="Creme_Caffe_Ricetta.html" class="btn btn-primary">📋 Ricetta</a>
+                        <a href="Creme_Caffe_Simulazione.html" class="btn btn-secondary">🔬 Simulazione</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Placeholder per future ricette -->
+            <div class="recipe-card" style="opacity: 0.6;">
+                <img src="https://via.placeholder.com/350x200/cccccc/666666?text=Prossimamente" 
+                     alt="Prossimamente" class="recipe-image">
+                <div class="recipe-content">
+                    <h3 class="recipe-title">🌟 Vaniglia Classica</h3>
+                    <p class="recipe-description">
+                        Gelato alla vaniglia con Pasta Vaniglia Antica Pregel. 
+                        La base perfetta per ogni gelateria.
+                    </p>
+                    <div class="recipe-stats">
+                        <span>📊 POD: 15%</span>
+                        <span>🧊 PAC: 110</span>
+                        <span>🥛 Grassi: 8%</span>
+                    </div>
+                    <div class="recipe-buttons">
+                        <span class="btn" style="background: #ccc; color: #666;">Prossimamente</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

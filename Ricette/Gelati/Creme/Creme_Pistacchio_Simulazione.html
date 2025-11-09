@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulazione Sensoriale - Gelato Pistacchio - Ninja Creami Deluxe</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body { 
+            font-family: 'Poppins', sans-serif; 
+            margin: 0; 
+            padding: 20px; 
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+            animation: backgroundShift 12s ease-in-out infinite alternate;
+            min-height: 100vh;
+        }
+
+        @keyframes backgroundShift {
+            0% { background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); }
+            50% { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); }
+            100% { background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-25px) rotate(180deg); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .container { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            background: rgba(255,255,255,0.95); 
+            border-radius: 25px; 
+            box-shadow: 0 25px 50px rgba(0,0,0,0.2); 
+            overflow: hidden;
+            backdrop-filter: blur(15px);
+            transition: all 0.3s ease;
+        }
+
+        .container:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 35px 70px rgba(0,0,0,0.3);
+        }
+
+        .header { 
+            background: linear-gradient(135deg, #667eea, #764ba2); 
+            color: white; 
+            padding: 50px; 
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '🔬';
+            position: absolute;
+            top: 25px;
+            right: 40px;
+            font-size: 4em;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .header h1 { 
+            margin: 0; 
+            font-size: 3.2em; 
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.4);
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1.3em;
+            opacity: 0.95;
+            font-weight: 300;
+        }
+
+        .simulation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            padding: 40px;
+        }
+
+        .sense-card {
+            background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(240,240,240,0.9));
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .sense-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+        }
+
+        .sense-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #667eea, #764ba2, #f093fb, #f5576c);
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        .sense-icon {
+            font-size: 3.5em;
+            margin-bottom: 15px;
+            display: block;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .sense-title {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        .sense-description {
+            color: #555;
+            line-height: 1.6;
+            font-size: 1.1em;
+        }
+
+        .intensity-bar {
+            width: 100%;
+            height: 12px;
+            background: #e0e0e0;
+            border-radius: 6px;
+            margin: 15px 0;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .intensity-fill {
+            height: 100%;
+            border-radius: 6px;
+            transition: width 2s ease-in-out;
+            position: relative;
+        }
+
+        .intensity-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .dolcezza { background: linear-gradient(90deg, #ff9a9e, #fecfef); width: 76%; }
+        .cremosita { background: linear-gradient(90deg, #a8edea, #fed6e3); width: 84%; }
+        .intensita { background: linear-gradient(90deg, #ffecd2, #fcb69f); width: 90%; }
+        .complessita { background: linear-gradient(90deg, #667eea, #764ba2); width: 85%; }
+        .spatolabilita { background: linear-gradient(90deg, #43e97b, #38f9d7); width: 85%; }
+
+        .technical-analysis {
+            margin: 40px;
+            padding: 35px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 20px;
+            color: white;
+            position: relative;
+        }
+
+        .technical-analysis::before {
+            content: '⚗️';
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 3em;
+            opacity: 0.7;
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        .analysis-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 25px;
+        }
+
+        .analysis-item {
+            background: rgba(255,255,255,0.15);
+            padding: 20px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .analysis-item:hover {
+            background: rgba(255,255,255,0.25);
+            transform: translateY(-5px);
+        }
+
+        .analysis-value {
+            font-size: 2em;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .analysis-label {
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+
+        .flavor-profile {
+            margin: 40px;
+            padding: 35px;
+            background: linear-gradient(135deg, #f093fb, #f5576c);
+            border-radius: 20px;
+            color: white;
+        }
+
+        .flavor-notes {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .flavor-note {
+            background: rgba(255,255,255,0.2);
+            padding: 12px 20px;
+            border-radius: 25px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        .flavor-note:hover {
+            background: rgba(255,255,255,0.3);
+            transform: scale(1.05);
+        }
+
+        .navigation {
+            text-align: center;
+            padding: 40px;
+            background: rgba(0,0,0,0.05);
+        }
+
+        .nav-button {
+            display: inline-block;
+            padding: 18px 35px;
+            margin: 15px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.4s ease;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            font-size: 1.1em;
+        }
+
+        .nav-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+            background: linear-gradient(135deg, #764ba2, #667eea);
+        }
+
+        .temperature-guide {
+            margin: 40px;
+            padding: 30px;
+            background: linear-gradient(135deg, #4facfe, #00f2fe);
+            border-radius: 20px;
+            color: white;
+        }
+
+        .temp-scale {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 20px 0;
+            padding: 15px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 15px;
+        }
+
+        .temp-point {
+            text-align: center;
+            flex: 1;
+        }
+
+        .temp-value {
+            font-size: 1.5em;
+            font-weight: 700;
+        }
+
+        .temp-desc {
+            font-size: 0.9em;
+            opacity: 0.9;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🔬 Simulazione Sensoriale</h1>
+            <p>Analisi Predittiva Gelato Pistacchio - Ninja Creami Deluxe</p>
+        </div>
+
+        <div class="simulation-grid">
+            <div class="sense-card">
+                <span class="sense-icon">👅</span>
+                <div class="sense-title">Dolcezza Percepita</div>
+                <div class="sense-description">
+                    Equilibrata e raffinata, con note iniziali di pistacchio siciliano seguite dalla dolcezza naturale della frutta secca. La Pasta Pistacchissimo 100% conferisce autenticità senza eccessi zuccherini.
+                </div>
+                <div class="intensity-bar">
+                    <div class="intensity-fill dolcezza"></div>
+                </div>
+                <small>Intensità: 7.6/10 - Perfettamente bilanciata</small>
+            </div>
+
+            <div class="sense-card">
+                <span class="sense-icon">🥄</span>
+                <div class="sense-title">Cremosità</div>
+                <div class="sense-description">
+                    Texture vellutata e compatta tipica della Ninja Creami Deluxe, con la caratteristica granulosità fine del pistacchio che conferisce piacevole contrasto sensoriale.
+                </div>
+                <div class="intensity-bar">
+                    <div class="intensity-fill cremosita"></div>
+                </div>
+                <small>Intensità: 8.4/10 - Eccellente struttura</small>
+            </div>
+
+            <div class="sense-card">
+                <span class="sense-icon">🌰</span>
+                <div class="sense-title">Intensità Aromatica</div>
+                <div class="sense-description">
+                    Profilo intenso e persistente di pistacchio siciliano autentico, con note tostate e burrose. Aroma immediatamente riconoscibile e di alta qualità artigianale.
+                </div>
+                <div class="intensity-bar">
+                    <div class="intensity-fill intensita"></div>
+                </div>
+                <small>Intensità: 9.0/10 - Molto caratteristico</small>
+            </div>
+
+            <div class="sense-card">
+                <span class="sense-icon">🎭</span>
+                <div class="sense-title">Complessità</div>
+                <div class="sense-description">
+                    Gelato di carattere con profilo aromatico lineare ma sofisticato. La purezza del pistacchio siciliano emerge senza interferenze, creando un'esperienza sensoriale pulita e distintiva.
+                </div>
+                <div class="intensity-bar">
+                    <div class="intensity-fill complessita"></div>
+                </div>
+                <small>Intensità: 8.5/10 - Elegantemente semplice</small>
+            </div>
+
+            <div class="sense-card">
+                <span class="sense-icon">❄️</span>
+                <div class="sense-title">Spatolabilità</div>
+                <div class="sense-description">
+                    Ottima lavorabilità grazie al PAC calibrato a 117. Mantiene cremosità anche a temperature di servizio standard senza cristallizzazione, ideale per servizio immediato.
+                </div>
+                <div class="intensity-bar">
+                    <div class="intensity-fill spatolabilita"></div>
+                </div>
+                <small>Intensità: 8.5/10 - Perfetta per servizio</small>
+            </div>
+
+            <div class="sense-card">
+                <span class="sense-icon">🏆</span>
+                <div class="sense-title">Qualità Complessiva</div>
+                <div class="sense-description">
+                    Gelato artigianale di eccellenza che esprime la purezza del pistacchio siciliano. Equilibrio perfetto tra tradizione siciliana e innovazione tecnologica Ninja Creami.
+                </div>
+                <div class="intensity-bar">
+                    <div class="intensity-fill complessita"></div>
+                </div>
+                <small>Valutazione: 8.8/10 - Eccellenza artigianale</small>
+            </div>
+        </div>
+
+        <div class="technical-analysis">
+            <h2 style="font-size: 2.2em; margin-bottom: 20px;">📊 Analisi Tecnica Predittiva</h2>
+            <div class="analysis-grid">
+                <div class="analysis-item">
+                    <div class="analysis-value">15.2%</div>
+                    <div class="analysis-label">POD Calcolato</div>
+                </div>
+                <div class="analysis-item">
+                    <div class="analysis-value">117</div>
+                    <div class="analysis-label">PAC Finale</div>
+                </div>
+                <div class="analysis-item">
+                    <div class="analysis-value">37.8%</div>
+                    <div class="analysis-label">Solidi Totali</div>
+                </div>
+                <div class="analysis-item">
+                    <div class="analysis-value">8.4%</div>
+                    <div class="analysis-label">Grassi Totali</div>
+                </div>
+                <div class="analysis-item">
+                    <div class="analysis-value">-12°C</div>
+                    <div class="analysis-label">Temp. Servizio Ottimale</div>
+                </div>
+                <div class="analysis-item">
+                    <div class="analysis-value">5-7 gg</div>
+                    <div class="analysis-label">Conservazione Ottimale</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="flavor-profile">
+            <h2 style="font-size: 2.2em; margin-bottom: 15px;">🎨 Profilo Aromatico Dettagliato</h2>
+            <p style="font-size: 1.2em; margin-bottom: 20px;">Note sensoriali previste in ordine di percezione:</p>
+            <div class="flavor-notes">
+                <div class="flavor-note">🌰 Pistacchio - Nota dominante</div>
+                <div class="flavor-note">🧈 Burro - Base cremosa</div>
+                <div class="flavor-note">🥛 Latte - Dolcezza lattea</div>
+                <div class="flavor-note">🔥 Tostato - Note calde</div>
+                <div class="flavor-note">🌿 Erbaceo - Freschezza</div>
+                <div class="flavor-note">🍯 Miele - Dolcezza naturale</div>
+                <div class="flavor-note">🧂 Salino - Equilibrio</div>
+                <div class="flavor-note">🌰 Persistenza - Retrogusto</div>
+            </div>
+        </div>
+
+        <div class="temperature-guide">
+            <h2 style="font-size: 2.2em; margin-bottom: 20px;">🌡️ Guida Temperature di Servizio</h2>
+            <div class="temp-scale">
+                <div class="temp-point">
+                    <div class="temp-value">-18°C</div>
+                    <div class="temp-desc">Conservazione<br>Troppo duro</div>
+                </div>
+                <div class="temp-point">
+                    <div class="temp-value">-14°C</div>
+                    <div class="temp-desc">Servizio Standard<br>Buona spatolabilità</div>
+                </div>
+                <div class="temp-point">
+                    <div class="temp-value">-12°C</div>
+                    <div class="temp-desc">Servizio Ottimale<br>Massima espressione</div>
+                </div>
+                <div class="temp-point">
+                    <div class="temp-value">-8°C</div>
+                    <div class="temp-desc">Limite Superiore<br>Rischio scioglimento</div>
+                </div>
+            </div>
+            <p style="margin-top: 20px; font-size: 1.1em;">
+                <strong>💡 Consiglio:</strong> Estrarre dal congelatore 2-3 minuti prima del servizio per raggiungere la temperatura ottimale di -12°C.
+            </p>
+        </div>
+
+        <div style="margin: 40px; padding: 30px; background: linear-gradient(135deg, #43e97b, #38f9d7); border-radius: 20px; color: white;">
+            <h2 style="font-size: 2.2em; margin-bottom: 20px;">🔮 Previsioni Sensoriali Avanzate</h2>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px;">
+                <div style="background: rgba(255,255,255,0.2); padding: 20px; border-radius: 15px;">
+                    <h3>👄 Sensazione in Bocca</h3>
+                    <p>Ingresso cremoso e avvolgente, sviluppo intenso di pistacchio siciliano, finale persistente con note tostate e burrose caratteristiche.</p>
+                </div>
+                
+                <div style="background: rgba(255,255,255,0.2); padding: 20px; border-radius: 15px;">
+                    <h3>👃 Profilo Olfattivo</h3>
+                    <p>Aroma immediato e intenso di pistacchio autentico, note di frutta secca tostata, sfumature erbacee tipiche del pistacchio siciliano di Bronte.</p>
+                </div>
+                
+                <div style="background: rgba(255,255,255,0.2); padding: 20px; border-radius: 15px;">
+                    <h3>🎯 Bilanciamento</h3>
+                    <p>Equilibrio perfetto tra dolce (base lattea), salato (pistacchio naturale) e tostato. Il pistacchio domina senza sovrastare la cremosità.</p>
+                </div>
+                
+                <div style="background: rgba(255,255,255,0.2); padding: 20px; border-radius: 15px;">
+                    <h3>⏱️ Persistenza</h3>
+                    <p>Durata lunga con evoluzione graduale. Le note di pistacchio si intensificano nel finale, lasciando un ricordo distintivo e piacevole.</p>
+                </div>
+            </div>
+        </div>
+
+        <div style="margin: 40px; padding: 35px; background: linear-gradient(135deg, #ff6b6b, #ee5a24); border-radius: 20px; color: white;">
+            <h2 style="font-size: 2.2em; margin-bottom: 20px;">✅ Checklist Pre-Produzione Completa</h2>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px;">
+                <div style="background: rgba(255,255,255,0.15); padding: 25px; border-radius: 15px;">
+                    <h3>📦 Ingredienti da Preparare</h3>
+                    <ul style="margin: 15px 0; line-height: 1.8;">
+                        <li>✓ Latte intero (552g) - temperatura ambiente</li>
+                        <li>✓ Panna LA 35 Trevalli (55g) - temperatura ambiente</li>
+                        <li>✓ Gran Base Pregel (55g) - setacciata</li>
+                        <li>✓ Saccarosio (65g) + Destrosio (45g) - premiscelati</li>
+                        <li>✓ Pasta Pistacchissimo 100% (53g) - temperatura ambiente</li>
+                        <li>✓ Granella pistacchio (opzionale) - tostata e raffreddata</li>
+                    </ul>
+                </div>
+                
+                <div style="background: rgba(255,255,255,0.15); padding: 25px; border-radius: 15px;">
+                    <h3>🔧 Attrezzature Necessarie</h3>
+                    <ul style="margin: 15px 0; line-height: 1.8;">
+                        <li>✓ Monsieur Cuisine (o robot da cucina equivalente)</li>
+                        <li>✓ Bilancia di precisione (0.1g)</li>
+                        <li>✓ Termometro digitale</li>
+                        <li>✓ Contenitori per bagnomaria</li>
+                        <li>✓ Bicchiere Ninja Creami Deluxe (709ml)</li>
+                        <li>✓ Setacci fini per polveri</li>
+                        <li>✓ Fruste manuali di riserva</li>
+                        <li>✓ Pellicola per copertura</li>
+                    </ul>
+                </div>
+                
+                <div style="background: rgba(255,255,255,0.15); padding: 25px; border-radius: 15px;">
+                    <h3>⏰ Tempi di Maturazione</h3>
+                    <ul style="margin: 15px 0; line-height: 1.8;">
+                        <li>✓ Pastorizzazione: 12 minuti totali</li>
+                        <li>✓ Raffreddamento a 40°C: 15-20 minuti</li>
+                        <li>✓ Raffreddamento a 4°C: 30-45 minuti</li>
+                        <li>✓ Maturazione in frigo: 8-12 ore</li>
+                        <li>✓ Congelamento: 14-24 ore a -18°C</li>
+                        <li>✓ Tempo totale: 24-36 ore</li>
+                    </ul>
+                </div>
+                
+                <div style="background: rgba(255,255,255,0.15); padding: 25px; border-radius: 15px;">
+                    <h3>🔍 Controlli Qualità</h3>
+                    <ul style="margin: 15px 0; line-height: 1.8;">
+                        <li>✓ Temperatura pastorizzazione: 85°C ± 2°C</li>
+                        <li>✓ Consistenza mix: liscia, senza grumi</li>
+                        <li>✓ Colore: verde pistacchio uniforme</li>
+                        <li>✓ Volume finale: 709ml ± 5ml</li>
+                        <li>✓ Congelamento uniforme: no cristalli visibili</li>
+                        <li>✓ Mantecazione: texture cremosa omogenea</li>
+                        <li>✓ Aroma: intenso e persistente</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div style="margin: 40px; padding: 35px; background: linear-gradient(135deg, #a8edea, #fed6e3); border-radius: 20px; color: #2c3e50;">
+            <h2 style="font-size: 2.2em; margin-bottom: 20px;">🔧 Suggerimenti per Miglioramenti</h2>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px;">
+                <div style="background: rgba(255,255,255,0.7); padding: 20px; border-radius: 15px; border-left: 5px solid #667eea;">
+                    <h3>🎯 Ottimizzazione Texture</h3>
+                    <p><strong>Problema:</strong> Gelato troppo duro</p>
+                    <p><strong>Soluzione:</strong> Aumentare destrosio a 50g (-5g saccarosio)</p>
+                    <p><strong>Risultato:</strong> PAC 125, maggiore spatolabilità</p>
+                </div>
+                
+                <div style="background: rgba(255,255,255,0.7); padding: 20px; border-radius: 15px; border-left: 5px solid #f093fb;">
+                    <h3>🌰 Intensificazione Aroma</h3>
+                    <p><strong>Miglioramento:</strong> Aggiungere 10g Pasta Pistacchissimo</p>
+                    <p><strong>Alternativa:</strong> 15g granella pistacchio tostato</p>
+                    <p><strong>Effetto:</strong> Profilo più ricco e croccante</p>
+                </div>
+                
+                <div style="background: rgba(255,255,255,0.7); padding: 20px; border-radius: 15px; border-left: 5px solid #43e97b;">
+                    <h3>🍫 Variazione Gourmet</h3>
+                    <p><strong>Upgrade:</strong> Aggiungere scaglie cioccolato fondente</p>
+                    <p><strong>Tecnica:</strong> 20g cioccolato 70% dopo primo ciclo</p>
+                    <p><strong>Beneficio:</strong> Contrasto amaro-dolce raffinato</p>
+                </div>
+                
+                <div style="background: rgba(255,255,255,0.7); padding: 20px; border-radius: 15px; border-left: 5px solid #4facfe;">
+                    <h3>🎨 Presentazione Siciliana</h3>
+                    <p><strong>Decorazione:</strong> Granella pistacchio + oro alimentare</p>
+                    <p><strong>Servizio:</strong> Coppette in ceramica siciliana</p>
+                    <p><strong>Accompagnamento:</strong> Cannolo siciliano miniatura</p>
+                </div>
+            </div>
+        </div>
+
+        <div style="margin: 40px; padding: 35px; background: linear-gradient(135deg, #ffecd2, #fcb69f); border-radius: 20px; color: #2c3e50;">
+            <h2 style="font-size: 2.2em; margin-bottom: 20px;">🌸 Varianti Stagionali</h2>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+                <div style="background: rgba(255,255,255,0.8); padding: 20px; border-radius: 15px; text-align: center;">
+                    <h3>🌷 Primavera</h3>
+                    <p><strong>Pistacchio e Rose</strong></p>
+                    <p>+ 3g Acqua di rose<br>+ Petali di rosa canditi<br>+ Pistacchi freschi</p>
+                    <small>Delicato e profumato</small>
+                </div>
+                
+                <div style="background: rgba(255,255,255,0.8); padding: 20px; border-radius: 15px; text-align: center;">
+                    <h3>☀️ Estate</h3>
+                    <p><strong>Pistacchio e Limone</strong></p>
+                    <p>+ Scorza limone siciliano<br>+ 10g succo limone<br>+ Granita al limone</p>
+                    <small>Rinfrescante e agrumato</small>
+                </div>
+                
+                <div style="background: rgba(255,255,255,0.8); padding: 20px; border-radius: 15px; text-align: center;">
+                    <h3>🍂 Autunno</h3>
+                    <p><strong>Pistacchio e Miele</strong></p>
+                    <p>+ 15g Miele di zagara<br>+ Noci tostate<br>+ Cannella in polvere</p>
+                    <small>Caldo e avvolgente</small>
+                </div>
+                
+                <div style="background: rgba(255,255,255,0.8); padding: 20px; border-radius: 15px; text-align: center;">
+                    <h3>❄️ Inverno</h3>
+                    <p><strong>Pistacchio e Cioccolato</strong></p>
+                    <p>+ 25g Cioccolato fondente<br>+ Amaretti sbriciolati<br>+ Rum siciliano</p>
+                    <small>Ricco e festivo</small>
+                </div>
+            </div>
+        </div>
+
+        <div style="margin: 40px; padding: 35px; background: linear-gradient(135deg, #667eea, #764ba2); border-radius: 20px; color: white;">
+            <h2 style="font-size: 2.2em; margin-bottom: 20px;">🍽️ Abbinamenti Consigliati</h2>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px;">
+                <div style="background: rgba(255,255,255,0.15); padding: 25px; border-radius: 15px;">
+                    <h3>🍷 Abbinamenti Alcolici</h3>
+                    <ul style="margin: 15px 0; line-height: 1.8;">
+                        <li>🥃 <strong>Distillati:</strong> Grappa di Nero d'Avola, Amaro Averna</li>
+                        <li>🍾 <strong>Spumanti:</strong> Moscato di Noto, Malvasia delle Lipari</li>
+                        <li>🍷 <strong>Vini dolci:</strong> Passito di Pantelleria, Marsala dolce</li>
+                        <li>☕ <strong>Liquori:</strong> Amaretto di Saronno, Frangelico</li>
+                    </ul>
+                </div>
+                
+                <div style="background: rgba(255,255,255,0.15); padding: 25px; border-radius: 15px;">
+                    <h3>🍰 Dolci di Accompagnamento</h3>
+                    <ul style="margin: 15px 0; line-height: 1.8;">
+                        <li>🍪 <strong>Biscotti:</strong> Amaretti, Cannoli siciliani, Biscotti al pistacchio</li>
+                        <li>🧁 <strong>Pasticceria siciliana:</strong> Cassata, Cannoli, Granita</li>
+                        <li>🍫 <strong>Cioccolato:</strong> Fondente 70%, Modica al pistacchio</li>
+                        <li>🥧 <strong>Crostate:</strong> Crostata pistacchio, Torta della nonna</li>
+                    </ul>
+                </div>
+                
+                <div style="background: rgba(255,255,255,0.15); padding: 25px; border-radius: 15px;">
+                    <h3>☕ Bevande Calde</h3>
+                    <ul style="margin: 15px 0; line-height: 1.8;">
+                        <li>☕ <strong>Caffè:</strong> Espresso siciliano, Caffè con granella pistacchio</li>
+                        <li>🫖 <strong>Tè:</strong> Tè verde al gelsomino, Tè nero Earl Grey</li>
+                        <li>🍫 <strong>Cioccolata:</strong> Calda al pistacchio, con panna montata</li>
+                        <li>🌿 <strong>Tisane:</strong> Finocchietto selvatico, Zagara siciliana</li>
+                    </ul>
+                </div>
+                
+                <div style="background: rgba(255,255,255,0.15); padding: 25px; border-radius: 15px;">
+                    <h3>🎭 Occasioni Speciali</h3>
+                    <ul style="margin: 15px 0; line-height: 1.8;">
+                        <li>🎂 <strong>Compleanni:</strong> Con granella pistacchio e candeline</li>
+                        <li>💒 <strong>Matrimoni:</strong> Servizio in coppe di cristallo siciliano</li>
+                        <li>🎄 <strong>Natale:</strong> Con decorazioni oro e pistacchi canditi</li>
+                        <li>🍽️ <strong>Cene eleganti:</strong> Porzioni piccole, presentazione raffinata</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div style="margin: 40px; padding: 35px; background: linear-gradient(135deg, #fa709a, #fee140); border-radius: 20px; color: #2c3e50;">
+            <h2 style="font-size: 2.2em; margin-bottom: 20px;">📊 Analisi Tecnica Professionale Finale</h2>
+            
+            <div style="background: rgba(255,255,255,0.9); padding: 25px; border-radius: 15px; margin-bottom: 20px;">
+                <h3>🔬 Parametri Biochimici Ottimizzati</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 15px;">
+                    <div style="text-align: center; padding: 15px; background: #f8f9fa; border-radius: 10px;">
+                        <strong>POD: 15.2%</strong><br>
+                        <small>Potere Dolcificante Ottimale</small>
+                    </div>
+                    <div style="text-align: center; padding: 15px; background: #f8f9fa; border-radius: 10px;">
+                        <strong>PAC: 117</strong><br>
+                        <small>Potere Anticongelante Calibrato</small>
+                    </div>
+                    <div style="text-align: center; padding: 15px; background: #f8f9fa; border-radius: 10px;">
+                        <strong>Overrun: 15-20%</strong><br>
+                        <small>Incorporazione Aria Ninja Creami</small>
+                    </div>
+                    <div style="text-align: center; padding: 15px; background: #f8f9fa; border-radius: 10px;">
+                        <strong>Densità: 1.10 g/ml</strong><br>
+                        <small>Struttura Compatta Ideale</small>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="background: rgba(255,255,255,0.9); padding: 25px; border-radius: 15px;">
+                <h3>🎯 Valutazione Sensoriale Professionale</h3>
+                <p style="font-size: 1.1em; line-height: 1.6; margin-bottom: 15px;">
+                    <strong>Risultato Finale:</strong> Gelato artigianale di eccellenza che esprime la purezza e l'intensità del pistacchio siciliano di Bronte. 
+                    La formulazione ottimizzata per Ninja Creami Deluxe garantisce texture cremosa, spatolabilità ottimale e autenticità aromatica superiore.
+                </p>
+                <div style="display: flex; justify-content: space-around; margin-top: 20px;">
+                    <div style="text-align: center;">
+                        <div style="font-size: 2em; color: #28a745;">8.8/10</div>
+                        <small>Valutazione Complessiva</small>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-size: 2em; color: #17a2b8;">⭐⭐⭐⭐⭐</div>
+                        <small>Livello Artigianale</small>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-size: 2em; color: #ffc107;">🏆</div>
+                        <small>Eccellenza Siciliana</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="navigation">
+            <a href="Creme_Pistacchio_Ricetta.html" class="nav-button">
+                📋 Torna alla Ricetta
+            </a>
+            <a href="../../../index.html" class="nav-button">
+                🏠 Menu Principale
+            </a>
+            <a href="index.html" class="nav-button">
+                🥛 Categoria Creme
+            </a>
+        </div>
+    </div>
+</body>
+</html>

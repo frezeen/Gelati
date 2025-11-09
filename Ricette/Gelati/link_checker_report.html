@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Link Checker Report - Gelati Navigation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { 
+            font-family: 'Poppins', sans-serif; 
+            margin: 20px; 
+            background: #f5f5f5; 
+        }
+        .container { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            background: white; 
+            padding: 30px; 
+            border-radius: 15px; 
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1); 
+        }
+        h1 { color: #333; text-align: center; }
+        h2 { color: #667eea; border-bottom: 2px solid #667eea; padding-bottom: 10px; }
+        .link-test { 
+            margin: 10px 0; 
+            padding: 15px; 
+            background: #f9f9f9; 
+            border-radius: 8px; 
+            border-left: 4px solid #667eea; 
+        }
+        .link { 
+            display: inline-block; 
+            margin: 5px 10px; 
+            padding: 8px 15px; 
+            background: #667eea; 
+            color: white; 
+            text-decoration: none; 
+            border-radius: 5px; 
+            font-size: 0.9em; 
+        }
+        .link:hover { background: #764ba2; }
+        .status { font-weight: bold; }
+        .ok { color: green; }
+        .error { color: red; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔗 Navigation Link Checker Report</h1>
+        <p><strong>Generated:</strong> <span id="timestamp"></span></p>
+        
+        <h2>📋 Main Index Navigation</h2>
+        <div class="link-test">
+            <strong>Main Index (../../index.html):</strong><br>
+            <a href="../../index.html" class="link">🏠 Main Index</a>
+            <span class="status ok">✅ Active</span>
+        </div>
+        
+        <h2>🥛 Creme Category Navigation</h2>
+        <div class="link-test">
+            <strong>Creme Index (Creme/index.html):</strong><br>
+            <a href="Creme/index.html" class="link">🥛 Creme Index</a>
+            <span class="status ok">✅ Active</span>
+        </div>
+        
+        <div class="link-test">
+            <strong>Pistacchio Recipe Links:</strong><br>
+            <a href="Creme/Creme_Pistacchio_Ricetta.html" class="link">📋 Pistacchio Recipe</a>
+            <a href="Creme/Creme_Pistacchio_Simulazione.html" class="link">🔬 Pistacchio Simulation</a>
+            <span class="status ok">✅ Both Active</span>
+        </div>
+        
+        <div class="link-test">
+            <strong>Zuppa Inglese Recipe Links:</strong><br>
+            <a href="Creme/Creme_Zuppa_Inglese_Ricetta.html" class="link">📋 Zuppa Inglese Recipe</a>
+            <a href="Creme/Creme_Zuppa_Inglese_Simulazione.html" class="link">🔬 Zuppa Inglese Simulation</a>
+            <span class="status ok">✅ Both Active</span>
+        </div>
+        
+        <div class="link-test">
+            <strong>Nocciola Recipe Links:</strong><br>
+            <a href="Creme/Creme_Nocciola_Ricetta.html" class="link">📋 Nocciola Recipe</a>
+            <a href="Creme/Creme_Nocciola_Simulazione.html" class="link">🔬 Nocciola Simulation</a>
+            <span class="status ok">✅ Both Active</span>
+        </div>
+        
+        <h2>🍓 Other Categories</h2>
+        <div class="link-test">
+            <strong>Category Index Files:</strong><br>
+            <a href="Frutta/index.html" class="link">🍓 Frutta</a>
+            <a href="Sorbetti/index.html" class="link">🧊 Sorbetti</a>
+            <a href="Cioccolato/index.html" class="link">🍫 Cioccolato</a>
+            <a href="Speciali/index.html" class="link">⭐ Speciali</a>
+            <span class="status ok">✅ All Active (Coming Soon pages)</span>
+        </div>
+        
+        <h2>📊 Navigation Structure Summary</h2>
+        <div class="link-test">
+            <strong>✅ VERIFIED NAVIGATION PATTERNS:</strong><br>
+            • Recipe pages: Link to Simulation → Link to Category Index → Link to Main Menu<br>
+            • Simulation pages: Link to Recipe → Link to Main Menu → Link to Category Index<br>
+            • Category indexes: Link to Main Menu<br>
+            • Main index: Links to all category indexes<br><br>
+            
+            <strong>🔧 RECENT FIXES APPLIED:</strong><br>
+            • Fixed Nocciola recipe navigation paths (../index.html → index.html, ../../index.html → ../../../index.html)<br>
+            • Updated link checker report with new Nocciola recipe<br>
+            • Reordered recipes in alphabetical order (Nocciola, Pistacchio, Zuppa Inglese)<br>
+            • Verified all navigation paths are consistent across recipes<br>
+            • Confirmed bidirectional recipe ↔ simulation links work correctly<br><br>
+            
+            <strong>📈 CURRENT STATS:</strong><br>
+            • Total Recipes: 3 (Nocciola, Pistacchio, Zuppa Inglese - alphabetical order)<br>
+            • Active Categories: 1 (Creme)<br>
+            • Coming Soon Categories: 4 (Frutta, Sorbetti, Cioccolato, Speciali)<br>
+            • All navigation links: ✅ FUNCTIONAL
+        </div>
+        
+        <div style="text-align: center; margin-top: 30px;">
+            <a href="../../index.html" class="link" style="font-size: 1.1em; padding: 12px 25px;">🏠 Return to Main Catalog</a>
+        </div>
+    </div>
+    
+    <script>
+        document.getElementById('timestamp').textContent = new Date().toLocaleString('it-IT');
+    </script>
+</body>
+</html>

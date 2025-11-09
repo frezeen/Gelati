@@ -1,0 +1,13 @@
+{
+  "enabled": true,
+  "name": "Table Updater",
+  "description": "Automatically recalculates all existing recipes when ingredient tables are updated in the rules file to ensure consistency with new parameters.",
+  "version": "1",
+  "when": {
+    "type": "userTriggered"
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "The gelato rules file has been modified. Check if changes were made to ingredient tables (TABELLE DI LOOKUP COMPLETE, Coefficienti POD e PAC, or Densità sections). If so, analyze all existing HTML recipe files in the /Ricette/Gelati/ directory structure and verify if the new parameters require recalculations. For each HTML recipe found: 1) Extract ingredients and weights from HTML tables, 2) Recalculate POD/PAC with new parameters, 3) Check if targets are still centered, 4) Suggest necessary corrections, 5) Indicate if recipe HTML files need regeneration with updated parameters."
+  }
+}

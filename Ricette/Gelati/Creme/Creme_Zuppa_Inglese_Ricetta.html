@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ricetta Gelato Zuppa Inglese - Ninja Creami Deluxe</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body { 
+            font-family: 'Poppins', sans-serif; 
+            margin: 0; 
+            padding: 20px; 
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            animation: backgroundShift 10s ease-in-out infinite alternate;
+            min-height: 100vh;
+        }
+
+        @keyframes backgroundShift {
+            0% { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+            100% { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        .container { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            background: rgba(255,255,255,0.95); 
+            border-radius: 20px; 
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2); 
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+        }
+
+        .header { 
+            background: linear-gradient(135deg, #2E86AB, #1a5f7a); 
+            color: white; 
+            padding: 40px; 
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '🍨';
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 3em;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .header h1 { 
+            margin: 0; 
+            font-size: 3em; 
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            font-weight: 700;
+        }
+
+        .header p {
+            font-size: 1.2em;
+            margin-top: 10px;
+            opacity: 0.9;
+        }
+
+        .header-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin-top: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .section { 
+            margin: 30px; 
+            padding: 30px; 
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        .ingredienti { 
+            background: linear-gradient(135deg, #667eea, #764ba2); 
+            color: white; 
+        }
+        
+        .istruzioni { 
+            background: linear-gradient(135deg, #f093fb, #f5576c); 
+            color: white; 
+        }
+        
+        .parametri { 
+            background: linear-gradient(135deg, #4facfe, #00f2fe); 
+            color: white; 
+        }
+        
+        .note { 
+            background: linear-gradient(135deg, #43e97b, #38f9d7); 
+            color: white; 
+        }
+
+        .section h2 {
+            font-size: 2.2em;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        table { 
+            width: 100%; 
+            border-collapse: collapse; 
+            margin: 20px 0; 
+            background: rgba(255,255,255,0.95); 
+            border-radius: 12px; 
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+        
+        th { 
+            background: rgba(0,0,0,0.8); 
+            color: white; 
+            padding: 15px; 
+            text-align: left;
+            font-weight: 600;
+            font-size: 1.1em;
+        }
+        
+        td { 
+            padding: 15px; 
+            border-bottom: 1px solid #eee;
+            color: #333;
+            font-weight: 400;
+        }
+        
+        tr:nth-child(even) { 
+            background: #f8f9fa; 
+        }
+
+        tr:hover {
+            background: #e3f2fd;
+            transition: all 0.3s ease;
+        }
+        
+        .parametro-valore { 
+            font-weight: bold; 
+            color: #2E86AB;
+            font-size: 1.1em;
+        }
+        
+        .alert { 
+            padding: 15px; 
+            margin: 15px 0; 
+            border-radius: 10px;
+            border-left: 5px solid;
+            transition: all 0.3s ease;
+        }
+
+        .alert:hover {
+            transform: translateX(5px);
+        }
+        
+        .alert-success { 
+            background: rgba(212, 237, 218, 0.9); 
+            border-color: #28a745; 
+            color: #155724; 
+        }
+        
+        .alert-warning { 
+            background: rgba(255, 243, 205, 0.9); 
+            border-color: #ffc107; 
+            color: #856404; 
+        }
+
+        .alert-info {
+            background: rgba(209, 236, 241, 0.9);
+            border-color: #17a2b8;
+            color: #0c5460;
+        }
+        
+        .step { 
+            background: rgba(255,255,255,0.2); 
+            margin: 15px 0; 
+            padding: 20px; 
+            border-radius: 12px; 
+            border-left: 5px solid white;
+            transition: all 0.3s ease;
+        }
+
+        .step:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateX(10px);
+        }
+
+        .step h4 {
+            margin-bottom: 10px;
+            font-size: 1.3em;
+        }
+
+        .navigation {
+            text-align: center;
+            padding: 30px;
+            background: rgba(0,0,0,0.05);
+        }
+
+        .nav-button {
+            display: inline-block;
+            padding: 15px 30px;
+            margin: 10px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .nav-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            background: linear-gradient(135deg, #764ba2, #667eea);
+        }
+
+        .emoji {
+            font-size: 1.2em;
+            margin-right: 8px;
+        }
+
+        .status-ok {
+            color: #28a745;
+            font-weight: bold;
+        }
+
+        .status-warning {
+            color: #ffc107;
+            font-weight: bold;
+        }
+
+        .floating-element {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 2em;
+            animation: float 8s ease-in-out infinite;
+            opacity: 0.7;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🍨 Gelato Zuppa Inglese</h1>
+            <p>Ricetta professionale per Ninja Creami Deluxe - Volume: 709ml</p>
+            <img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?w=800&h=300&fit=crop&crop=center" 
+                 alt="Zuppa Inglese tradizionale italiana" 
+                 class="header-image"
+                 onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjBmMGYwIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIyNCIgZmlsbD0iIzY2NiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPvCfjaggWnVwcGEgSW5nbGVzZSBHZWxhdG88L3RleHQ+PC9zdmc+'">
+        </div>
+
+        <div class="section ingredienti">
+            <div class="floating-element">🍷</div>
+            <h2>📋 Ingredienti</h2>
+            <table>
+                <tr><th>Ingrediente</th><th>Peso (g)</th><th>% su X</th><th>Note</th></tr>
+                <tr><td><span class="emoji">🥛</span>Latte intero UHT</td><td>560</td><td>71.43%</td><td>+3% evaporazione</td></tr>
+                <tr><td><span class="emoji">🥛</span>Panna LA 35 Trevalli Professional</td><td>56</td><td>7.14%</td><td>+3% evaporazione</td></tr>
+                <tr><td><span class="emoji">🍯</span>Zucchero semolato</td><td>76</td><td>10.00%</td><td>Base dolcificante</td></tr>
+                <tr><td><span class="emoji">🍯</span>Destrosio</td><td>33</td><td>4.29%</td><td>Anticongelante</td></tr>
+                <tr><td><span class="emoji">⚗️</span>Gran Base Pregel</td><td>54</td><td>7.14%</td><td>Stabilizzante</td></tr>
+                <tr><td><span class="emoji">🌟</span>Pasta Vaniglia Antica Pregel</td><td>10</td><td>-</td><td>Aggiunta a 40°C</td></tr>
+                <tr><td><span class="emoji">🍷</span>Alchermes</td><td>35</td><td>-</td><td>Aggiunta a freddo</td></tr>
+                <tr><td><span class="emoji">🍪</span>Savoiardi sbriciolati</td><td>45</td><td>-</td><td>Mix-in finale</td></tr>
+                <tr><td><span class="emoji">🍫</span>Cacao amaro in polvere</td><td>12</td><td>-</td><td>Variegatura</td></tr>
+            </table>
+        </div>
+
+        <div class="section parametri">
+            <div class="floating-element">⚙️</div>
+            <h2>⚙️ Parametri Tecnici</h2>
+            <table>
+                <tr><th>Parametro</th><th>Valore Calcolato</th><th>Target</th><th>Status</th></tr>
+                <tr><td>POD (%)</td><td class="parametro-valore">15.2</td><td>15.0</td><td class="status-ok">✅ OK</td></tr>
+                <tr><td>PAC</td><td class="parametro-valore">118</td><td>115</td><td class="status-ok">✅ OK</td></tr>
+                <tr><td>Solidi Totali (%)</td><td class="parametro-valore">36.8</td><td>34-40%</td><td class="status-ok">✅ OK</td></tr>
+                <tr><td>Grassi (%)</td><td class="parametro-valore">8.2</td><td>7-10%</td><td class="status-ok">✅ OK</td></tr>
+                <tr><td>Volume Finale</td><td class="parametro-valore">709ml</td><td>709ml</td><td class="status-ok">✅ OK</td></tr>
+                <tr><td>Peso Totale</td><td class="parametro-valore">881g</td><td>-</td><td class="status-ok">✅ OK</td></tr>
+            </table>
+        </div>
+
+        <div class="section istruzioni">
+            <div class="floating-element">👨‍🍳</div>
+            <h2>👨‍🍳 Istruzioni Operative</h2>
+            
+            <div class="step">
+                <h4>🔸 Step 1 - Preparazione Mix Secco</h4>
+                <p>In una ciotola, mescolare accuratamente Gran Base Pregel (54g), zucchero semolato (76g) e destrosio (33g). Mescolare bene per evitare grumi.</p>
+            </div>
+
+            <div class="step">
+                <h4>🔸 Step 2 - Pastorizzazione Fase 1</h4>
+                <p><strong>Monsieur Cuisine:</strong> Versare latte (560g) e panna (56g) nel boccale. Impostare <strong>3 minuti, velocità 1, temperatura 50°C</strong> per raggiungere 40°C reali.</p>
+            </div>
+
+            <div class="step">
+                <h4>🔸 Step 3 - Aggiunta Mix Secco</h4>
+                <p>Al termine della Fase 1, con lame in movimento a velocità 2, versare rapidamente il mix secco preparato. Mescolare bene.</p>
+            </div>
+
+            <div class="step">
+                <h4>🔸 Step 4 - Pastorizzazione Fase 2</h4>
+                <p><strong>Monsieur Cuisine:</strong> Impostare <strong>13 minuti, temperatura 110°C</strong>. Primi 9 minuti a velocità 2, ultimi 4 minuti a velocità 3. Raggiunge 85°C reali.</p>
+            </div>
+
+            <div class="step">
+                <h4>🔸 Step 5 - Raffreddamento e Vaniglia</h4>
+                <p>Trasferire in contenitore pulito, raffreddare a bagnomaria fino a <strong>40°C</strong>. Aggiungere Pasta Vaniglia Antica (10g) e mescolare bene.</p>
+            </div>
+
+            <div class="step">
+                <h4>🔸 Step 6 - Maturazione</h4>
+                <p>Raffreddare fino a <strong>4°C</strong>, coprire e maturare in frigorifero per <strong>8 ore</strong>.</p>
+            </div>
+
+            <div class="step">
+                <h4>🔸 Step 7 - Congelamento</h4>
+                <p>Versare nel bicchiere Ninja Creami Deluxe (max 709ml), sigillare e congelare a <strong>-18°C per 14-24 ore</strong>.</p>
+            </div>
+
+            <div class="step">
+                <h4>🔸 Step 8 - Mantecazione e Assemblaggio</h4>
+                <p>Mantecare con programma "GELATO". Dopo prima mantecazione, aggiungere alchermes (35g), savoiardi (45g) e cacao (12g). Usare funzione "MIX-IN" per variegatura delicata.</p>
+            </div>
+        </div>
+
+        <div class="section note">
+            <div class="floating-element">📝</div>
+            <h2>📝 Simulazione Sensoriale & Note</h2>
+            
+            <div class="alert alert-success">
+                <strong>🎯 Texture Prevista:</strong> Cremosa e vellutata con piacevoli contrasti di consistenza dai savoiardi imbevuti e dalle venature di cacao. La base vanigliata offre una struttura equilibrata tipica della Ninja Creami Deluxe.
+            </div>
+            
+            <div class="alert alert-warning">
+                <strong>👅 Gusto Previsto:</strong> Complesso e stratificato con note dominanti di crema pasticcera vanigliata, seguite dall'aroma caratteristico dell'alchermes e dal contrasto amaro del cacao. I savoiardi apportano dolcezza e morbidezza.
+            </div>
+
+            <div class="alert alert-info">
+                <strong>🌡️ Spatolabilità:</strong> Ottima grazie al PAC calibrato a 118. Il gelato mantiene cremosità anche a temperature di servizio standard (-12°C/-14°C).
+            </div>
+            
+            <p><strong>📋 Note Tecniche:</strong></p>
+            <ul style="margin-left: 20px; margin-top: 10px;">
+                <li>L'alchermes abbassa il punto di congelamento - dosare con precisione</li>
+                <li>I savoiardi devono rimanere in pezzi distinguibili, non diventare pappetta</li>
+                <li>La variegatura al cacao crea il contrasto visivo tipico della Zuppa Inglese</li>
+                <li>Temperatura di servizio ottimale: -12°C per esaltare tutti i sapori</li>
+                <li>Conservazione: consumare entro 3-4 giorni per mantenere la texture dei savoiardi</li>
+            </ul>
+
+            <div style="margin-top: 20px; padding: 15px; background: rgba(255,255,255,0.2); border-radius: 10px;">
+                <strong>🏆 Risultato Atteso:</strong> Un gelato artigianale che ricrea fedelmente il sapore del dolce tradizionale italiano, con equilibrio perfetto tra cremosità, dolcezza e complessità aromatica.
+            </div>
+        </div>
+
+        <div class="navigation">
+            <a href="Creme_Zuppa_Inglese_Simulazione.html" class="nav-button">
+                🔬 Vai alla Simulazione Sensoriale
+            </a>
+            <a href="index.html" class="nav-button">
+                🥛 Torna alle Creme
+            </a>
+            <a href="../../../index.html" class="nav-button">
+                🏠 Menu Principale
+            </a>
+        </div>
+    </div>
+</body>
+</html>

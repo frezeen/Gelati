@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulazione Sensoriale - Gelato al Caffè</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #8B4513 0%, #5D4037 100%);
+            animation: backgroundShift 15s ease infinite alternate;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        @keyframes backgroundShift {
+            0% { background: linear-gradient(135deg, #8B4513 0%, #5D4037 100%); }
+            100% { background: linear-gradient(135deg, #A0522D 0%, #6F4E37 100%); }
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #6F4E37, #3E2723);
+            color: white;
+            padding: 60px 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.8em;
+            font-weight: 700;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+            margin-bottom: 15px;
+        }
+        
+        .nav-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 12px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        .btn-primary {
+            background: white;
+            color: #6F4E37;
+        }
+        
+        .btn-secondary {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+        
+        .section {
+            padding: 40px 30px;
+            margin: 20px;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+        
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+        
+        .section h2 {
+            font-size: 2em;
+            margin-bottom: 25px;
+            color: white;
+        }
+        
+        .analisi {
+            background: linear-gradient(135deg, #6F4E37, #5D4037);
+        }
+        
+        .sensoriale {
+            background: linear-gradient(135deg, #8B4513, #A0522D);
+        }
+        
+        .tecnica {
+            background: linear-gradient(135deg, #D2691E, #CD853F);
+        }
+        
+        .comparativa {
+            background: linear-gradient(135deg, #8B7355, #A0826D);
+        }
+        
+        .card {
+            background: rgba(255,255,255,0.25);
+            padding: 25px;
+            border-radius: 12px;
+            margin: 15px 0;
+            backdrop-filter: blur(10px);
+            border-left: 5px solid white;
+        }
+        
+        .card h3 {
+            color: white;
+            font-size: 1.5em;
+            margin-bottom: 15px;
+        }
+        
+        .card p, .card ul {
+            color: white;
+            line-height: 1.8;
+            opacity: 0.95;
+        }
+        
+        .card ul {
+            list-style-position: inside;
+            margin-left: 10px;
+        }
+        
+        .card li {
+            margin: 8px 0;
+        }
+        
+        .radar-chart {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin: 20px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .parameter-bar {
+            margin: 15px 0;
+        }
+        
+        .parameter-label {
+            color: #333;
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .bar-container {
+            background: #e0e0e0;
+            height: 30px;
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .bar-fill {
+            height: 100%;
+            border-radius: 15px;
+            transition: width 1s ease;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 10px;
+            color: white;
+            font-weight: 600;
+        }
+        
+        .bar-excellent { background: linear-gradient(90deg, #6F4E37, #8B4513); }
+        .bar-good { background: linear-gradient(90deg, #A0522D, #CD853F); }
+        .bar-moderate { background: linear-gradient(90deg, #D2691E, #DEB887); }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 20px 0;
+        }
+        
+        th {
+            background: rgba(0,0,0,0.8);
+            color: white;
+            padding: 15px;
+            text-align: left;
+        }
+        
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #eee;
+            color: #333;
+        }
+        
+        tr:hover {
+            background: #fff3e0;
+        }
+        
+        .highlight {
+            background: rgba(255,255,255,0.3);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border: 2px solid white;
+        }
+        
+        .highlight strong {
+            color: white;
+            font-size: 1.2em;
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 { font-size: 2em; }
+            .section { margin: 10px; padding: 20px 15px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🔬 Simulazione Sensoriale</h1>
+            <h2>Gelato al Caffè</h2>
+            <p>Analisi predittiva professionale delle caratteristiche organolettiche</p>
+            <div class="nav-buttons">
+                <a href="Creme_Caffe_Ricetta.html" class="btn btn-primary">📋 Torna alla Ricetta</a>
+                <a href="index.html" class="btn btn-secondary">📚 Tutte le Creme</a>
+                <a href="../../../index.html" class="btn btn-secondary">🏠 Home</a>
+            </div>
+        </div>
+
+        <div class="section analisi">
+            <h2>📊 Profilo Sensoriale Predittivo</h2>
+            
+            <div class="radar-chart">
+                <h3 style="color: #333; text-align: center; margin-bottom: 30px;">Parametri Organolettici (scala 0-10)</h3>
+                
+                <div class="parameter-bar">
+                    <div class="parameter-label">
+                        <span>☕ Intensità Caffè</span>
+                        <span>9.5/10</span>
+                    </div>
+                    <div class="bar-container">
+                        <div class="bar-fill bar-excellent" style="width: 95%;">Molto Intenso</div>
+                    </div>
+                </div>
+                
+                <div class="parameter-bar">
+                    <div class="parameter-label">
+                        <span>🍬 Dolcezza</span>
+                        <span>8.0/10</span>
+                    </div>
+                    <div class="bar-container">
+                        <div class="bar-fill bar-good" style="width: 80%;">Equilibrata</div>
+                    </div>
+                </div>
+                
+                <div class="parameter-bar">
+                    <div class="parameter-label">
+                        <span>🧊 Spatolabilità</span>
+                        <span>9.5/10</span>
+                    </div>
+                    <div class="bar-container">
+                        <div class="bar-fill bar-excellent" style="width: 95%;">Eccellente</div>
+                    </div>
+                </div>
+                
+                <div class="parameter-bar">
+                    <div class="parameter-label">
+                        <span>🥛 Cremosità</span>
+                        <span>8.5/10</span>
+                    </div>
+                    <div class="bar-container">
+                        <div class="bar-fill bar-excellent" style="width: 85%;">Vellutata</div>
+                    </div>
+                </div>
+                
+                <div class="parameter-bar">
+                    <div class="parameter-label">
+                        <span>👅 Persistenza Aromatica</span>
+                        <span>9.0/10</span>
+                    </div>
+                    <div class="bar-container">
+                        <div class="bar-fill bar-excellent" style="width: 90%;">Lunga</div>
+                    </div>
+                </div>
+                
+                <div class="parameter-bar">
+                    <div class="parameter-label">
+                        <span>❄️ Resistenza Fusione</span>
+                        <span>7.0/10</span>
+                    </div>
+                    <div class="bar-container">
+                        <div class="bar-fill bar-moderate" style="width: 70%;">Moderata</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section sensoriale">
+            <h2>👃 Analisi Sensoriale Dettagliata</h2>
+            
+            <div class="card">
+                <h3>👁️ Aspetto Visivo</h3>
+                <p><strong>Colore:</strong> Marrone intenso caratteristico del caffè espresso, con tonalità calde che vanno dal nocciola scuro al cioccolato al latte.</p>
+                <p><strong>Consistenza visiva:</strong> Compatta e omogenea, con superficie liscia e brillante tipica dei gelati professionali al caffè.</p>
+                <p><strong>Brillantezza:</strong> Elevata, con finish lucido che riflette la qualità della Pasta Caffè Costa d'oro Pregel.</p>
+            </div>
+            
+            <div class="card">
+                <h3>👃 Profilo Olfattivo</h3>
+                <p><strong>Note di testa:</strong> Caffè espresso intenso e aromatico, con sentori di tostatura media e leggere note caramellate.</p>
+                <p><strong>Note di cuore:</strong> Cremosità lattea che bilancia l'intensità del caffè, con delicate sfumature di vaniglia naturale dalla Gran Base.</p>
+                <p><strong>Note di fondo:</strong> Persistenza di caffè tostato con retrogusto leggermente amaro (piacevole) e note di cioccolato.</p>
+                <p><strong>Intensità aromatica:</strong> Molto alta (9/10), l'aroma di caffè è predominante e invitante.</p>
+            </div>
+            
+            <div class="card">
+                <h3>👅 Esperienza Gustativa</h3>
+                <p><strong>Primo impatto:</strong> Esplosione di caffè intenso con dolcezza equilibrata (POD 15,4%) che non copre l'amaro caratteristico.</p>
+                <p><strong>Sviluppo in bocca:</strong> La cremosità avvolge il palato mentre il sapore di caffè si intensifica. L'eritritolo contribuisce con un leggero "effetto fresco" che esalta la percezione del caffè.</p>
+                <p><strong>Retrogusto:</strong> Lungo e persistente, con il caffè che rimane presente per diversi secondi. Note tostate e leggermente amare (positive) che invitano al prossimo cucchiaio.</p>
+                <p><strong>Bilanciamento:</strong> Perfetto equilibrio tra intensità del caffè e dolcezza. L'amaro è presente ma piacevole, mai eccessivo.</p>
+            </div>
+            
+            <div class="card">
+                <h3>🌡️ Comportamento Termico</h3>
+                <p><strong>A -14°C (servizio):</strong> Spatolabilità eccellente grazie al PAC 127 elevato. Il gelato si preleva facilmente e mantiene la forma.</p>
+                <p><strong>A -10°C:</strong> Molto morbido, texture cremosa ideale. L'eritritolo contribuisce a mantenere morbidezza anche a temperature più basse.</p>
+                <p><strong>Fusione in bocca:</strong> Rapida e uniforme, il gelato si scioglie rilasciando progressivamente tutti gli aromi del caffè.</p>
+                <p><strong>Resistenza a temperatura ambiente:</strong> Moderata (6-9 minuti), tipica dei gelati con PAC elevato. Perfetto per consumo immediato.</p>
+            </div>
+        </div>
+
+        <div class="section tecnica">
+            <h2>🔬 Analisi Tecnica Approfondita</h2>
+            
+            <div class="card">
+                <h3>⚗️ Composizione e Struttura</h3>
+                <table>
+                    <tr>
+                        <th>Componente</th>
+                        <th>Valore</th>
+                        <th>Impatto Sensoriale</th>
+                    </tr>
+                    <tr>
+                        <td>Grassi Totali</td>
+                        <td>8,2%</td>
+                        <td>Cremosità ottimale, bocca vellutata</td>
+                    </tr>
+                    <tr>
+                        <td>Proteine Totali</td>
+                        <td>4,5%</td>
+                        <td>Struttura compatta, corpo pieno</td>
+                    </tr>
+                    <tr>
+                        <td>Zuccheri Totali</td>
+                        <td>~13,0%</td>
+                        <td>Dolcezza equilibrata, PAC elevato</td>
+                    </tr>
+                    <tr>
+                        <td>Solidi Totali</td>
+                        <td>36,8%</td>
+                        <td>Corpo pieno, texture densa</td>
+                    </tr>
+                    <tr>
+                        <td>Acqua</td>
+                        <td>~63,2%</td>
+                        <td>Freschezza, fusione rapida</td>
+                    </tr>
+                </table>
+            </div>
+            
+            <div class="card">
+                <h3>🎯 Bilanciamento POD/PAC Avanzato</h3>
+                <p><strong>POD 15,4%:</strong> Dolcezza leggermente superiore allo standard (15%) per bilanciare l'amaro naturale del caffè. Perfettamente calibrata per esaltare senza coprire.</p>
+                <p><strong>PAC 127 (elevato):</strong> Valore superiore alla crema classica (115) necessario per:</p>
+                <ul>
+                    <li>Compensare l'intensità del caffè che richiede texture extra morbida</li>
+                    <li>Garantire spatolabilità immediata anche a -16°C</li>
+                    <li>Assenza totale di cristalli di ghiaccio</li>
+                    <li>Fusione rapida che esalta la percezione aromatica</li>
+                </ul>
+                <p><strong>Ruolo Eritritolo:</strong> Contribuisce significativamente al PAC (280 per grammo) senza aumentare eccessivamente la dolcezza (POD 0,65). Permette di raggiungere PAC 127 mantenendo POD sotto controllo.</p>
+            </div>
+            
+            <div class="card">
+                <h3>🧪 Contributo Ingredienti Chiave</h3>
+                <p><strong>Pasta Caffè Costa d'oro Pregel (48g - 6,5% miscela):</strong></p>
+                <ul>
+                    <li>Aroma intenso di caffè espresso di alta qualità</li>
+                    <li>Apporta 21,6g zuccheri (contributo significativo a POD e PAC)</li>
+                    <li>Colore marrone caratteristico</li>
+                    <li>Persistenza aromatica eccezionale</li>
+                    <li>Dosaggio 7% di X (standard professionale)</li>
+                </ul>
+                <p><strong>Blend Zuccherino Triplo (28g sacc + 26g dest + 25g erit):</strong></p>
+                <ul>
+                    <li>Saccarosio 35%: dolcezza pulita di base</li>
+                    <li>Destrosio 33%: contributo PAC significativo, sotto limite 45%</li>
+                    <li>Eritritolo 32%: PAC elevato (280), POD basso (0,65), sotto limite 35%</li>
+                    <li>Bilanciamento perfetto per PAC 127 e POD 15,4%</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section comparativa">
+            <h2>📈 Analisi Comparativa</h2>
+            
+            <div class="card">
+                <h3>🆚 Confronto con Gelato Vaniglia Classico</h3>
+                <table>
+                    <tr>
+                        <th>Caratteristica</th>
+                        <th>Caffè</th>
+                        <th>Vaniglia</th>
+                    </tr>
+                    <tr>
+                        <td>Intensità Aroma</td>
+                        <td>9,5/10 (molto intenso)</td>
+                        <td>7,0/10 (delicato)</td>
+                    </tr>
+                    <tr>
+                        <td>Dolcezza</td>
+                        <td>15,4% POD</td>
+                        <td>15,0% POD</td>
+                    </tr>
+                    <tr>
+                        <td>Spatolabilità</td>
+                        <td>PAC 127 (eccellente)</td>
+                        <td>PAC 110 (ottima)</td>
+                    </tr>
+                    <tr>
+                        <td>Grassi</td>
+                        <td>8,2%</td>
+                        <td>7,5%</td>
+                    </tr>
+                    <tr>
+                        <td>Persistenza</td>
+                        <td>9,0/10 (lunga)</td>
+                        <td>7,5/10 (media)</td>
+                    </tr>
+                    <tr>
+                        <td>Complessità</td>
+                        <td>Alta (caffè + cremoso)</td>
+                        <td>Media (vaniglia pura)</td>
+                    </tr>
+                </table>
+            </div>
+            
+            <div class="card">
+                <h3>💡 Punti di Forza</h3>
+                <ul>
+                    <li><strong>Intensità eccezionale:</strong> Aroma di caffè autentico e persistente grazie alla Pasta Costa d'oro</li>
+                    <li><strong>PAC ottimizzato:</strong> 127 garantisce spatolabilità superiore, ideale per Ninja Creami</li>
+                    <li><strong>Bilanciamento avanzato:</strong> Eritritolo permette PAC alto senza dolcezza eccessiva</li>
+                    <li><strong>Cremosità professionale:</strong> Grassi 8,2% per texture vellutata</li>
+                    <li><strong>Versatilità:</strong> Base perfetta per varianti (affogato, tiramisù, caffè-cioccolato)</li>
+                    <li><strong>Persistenza aromatica:</strong> Il caffè rimane presente a lungo dopo la degustazione</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h3>⚠️ Considerazioni</h3>
+                <ul>
+                    <li><strong>Eritritolo:</strong> Può dare leggero "effetto fresco" in bocca (caratteristica, non difetto)</li>
+                    <li><strong>Intensità:</strong> Il gusto molto deciso potrebbe non piacere a chi preferisce sapori delicati</li>
+                    <li><strong>Fusione rapida:</strong> PAC 127 significa che a temperatura ambiente si ammorbidisce in 6-9 minuti</li>
+                    <li><strong>Amaro presente:</strong> L'amaro caratteristico del caffè è bilanciato ma percepibile (positivo per amanti del caffè)</li>
+                </ul>
+            </div>
+            
+            <div class="highlight">
+                <strong>🏆 VERDETTO FINALE:</strong><br><br>
+                Gelato al caffè di livello professionale con intensità aromatica eccezionale e bilanciamento tecnico perfetto. La Pasta Caffè Costa d'oro Pregel garantisce autenticità e persistenza, mentre il PAC 127 assicura spatolabilità superiore ottimizzata per Ninja Creami. L'uso intelligente dell'eritritolo permette di raggiungere PAC elevato mantenendo dolcezza equilibrata. Ideale per veri amanti del caffè che cercano un gelato intenso, cremoso e tecnicamente impeccabile. Voto complessivo: <strong>9.5/10</strong>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

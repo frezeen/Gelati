@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ricetta Gelato Crema di Ricotta e Vaniglia - Ninja Creami Deluxe</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            animation: backgroundShift 15s ease infinite alternate;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        @keyframes backgroundShift {
+            0% { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+            100% { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 60px 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: '🍨';
+            position: absolute;
+            font-size: 150px;
+            opacity: 0.1;
+            top: -20px;
+            right: -20px;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .header h1 {
+            font-size: 3em;
+            font-weight: 700;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+            margin-bottom: 15px;
+        }
+        
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.95;
+        }
+        
+        .header-image {
+            width: 100%;
+            max-width: 400px;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin: 20px auto;
+            display: block;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease;
+        }
+        
+        .header-image:hover {
+            transform: scale(1.05);
+        }
+        
+        .nav-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 12px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        .btn-primary {
+            background: white;
+            color: #667eea;
+        }
+        
+        .btn-secondary {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+        
+        .section {
+            padding: 40px 30px;
+            margin: 20px;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+        
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+        
+        .section h2 {
+            font-size: 2em;
+            margin-bottom: 25px;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .ingredienti {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+        }
+        
+        .istruzioni {
+            background: linear-gradient(135deg, #f093fb, #f5576c);
+        }
+        
+        .parametri {
+            background: linear-gradient(135deg, #4facfe, #00f2fe);
+        }
+        
+        .note {
+            background: linear-gradient(135deg, #43e97b, #38f9d7);
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        th {
+            background: rgba(0,0,0,0.8);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #eee;
+            color: #333;
+        }
+        
+        tr:hover {
+            background: #e3f2fd;
+            transition: background 0.3s ease;
+        }
+        
+        tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .step {
+            background: rgba(255,255,255,0.2);
+            margin: 15px 0;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 5px solid white;
+            backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
+        }
+        
+        .step:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateX(10px);
+        }
+        
+        .step h3 {
+            color: white;
+            margin-bottom: 10px;
+            font-size: 1.3em;
+        }
+        
+        .step p {
+            color: white;
+            line-height: 1.6;
+            opacity: 0.95;
+        }
+        
+        .alert {
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            backdrop-filter: blur(5px);
+        }
+        
+        .alert-success {
+            background: rgba(255,255,255,0.25);
+            border-left: 5px solid #4caf50;
+        }
+        
+        .alert-info {
+            background: rgba(255,255,255,0.25);
+            border-left: 5px solid #2196f3;
+        }
+        
+        .parametro-valore {
+            font-weight: 700;
+            color: #667eea;
+            font-size: 1.1em;
+        }
+        
+        .status-ok {
+            color: #4caf50;
+            font-weight: 600;
+        }
+        
+        .emoji-float {
+            display: inline-block;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 { font-size: 2em; }
+            .section { margin: 10px; padding: 20px 15px; }
+            table { font-size: 0.9em; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1><span class="emoji-float">🍨</span> Gelato Crema di Ricotta e Vaniglia</h1>
+            <p>Ricetta professionale per Ninja Creami Deluxe - Volume: 709ml</p>
+            <img src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=400&h=250&fit=crop&crop=center" 
+                 alt="Gelato alla Ricotta e Vaniglia" 
+                 class="header-image"
+                 onerror="this.src='https://via.placeholder.com/400x250/667eea/ffffff?text=Ricotta+e+Vaniglia'">
+            <div class="nav-buttons">
+                <a href="Creme_Ricotta_Vaniglia_Simulazione.html" class="btn btn-primary">🔬 Simulazione Sensoriale</a>
+                <a href="index.html" class="btn btn-secondary">📚 Tutte le Creme</a>
+                <a href="../../../index.html" class="btn btn-secondary">🏠 Home</a>
+            </div>
+        </div>
+
+        <div class="section ingredienti">
+            <h2>📋 Ingredienti</h2>
+            <table>
+                <tr>
+                    <th>Ingrediente</th>
+                    <th>Peso (g)</th>
+                    <th>% su X</th>
+                    <th>Note</th>
+                </tr>
+                <tr>
+                    <td>🥛 Latte intero 3,5% grassi</td>
+                    <td><strong>450</strong></td>
+                    <td>71,43%</td>
+                    <td>Base cremosa (+2% evaporazione)</td>
+                </tr>
+                <tr>
+                    <td>🥛 Panna LA 35 Trevalli Professional</td>
+                    <td><strong>45</strong></td>
+                    <td>7,14%</td>
+                    <td>35% grassi (+2% evaporazione)</td>
+                </tr>
+                <tr>
+                    <td>🍯 Saccarosio</td>
+                    <td><strong>47</strong></td>
+                    <td>7,47%</td>
+                    <td>Dolcezza principale</td>
+                </tr>
+                <tr>
+                    <td>🍯 Destrosio</td>
+                    <td><strong>39</strong></td>
+                    <td>6,19%</td>
+                    <td>Anticongelante (45% blend)</td>
+                </tr>
+                <tr>
+                    <td>⚗️ Gran Base Pregel</td>
+                    <td><strong>45</strong></td>
+                    <td>7,14%</td>
+                    <td>Stabilizzante ed emulsionante</td>
+                </tr>
+                <tr style="background: #fff3cd;">
+                    <td colspan="4"><strong>TOTALE BASE DA PASTORIZZARE (X)</strong>: 626g</td>
+                </tr>
+                <tr style="background: #e8f5e9;">
+                    <td>🧀 Ricotta Romana fresca</td>
+                    <td><strong>75</strong></td>
+                    <td>12% di X</td>
+                    <td>Aggiungere a 40°C dopo pastorizzazione</td>
+                </tr>
+                <tr style="background: #e8f5e9;">
+                    <td>🌟 Pasta Vaniglia Antica Pregel</td>
+                    <td><strong>16</strong></td>
+                    <td>2,5% di X</td>
+                    <td>Aggiungere a 40°C dopo pastorizzazione</td>
+                </tr>
+                <tr style="background: #f3e5f5;">
+                    <td colspan="4"><strong>PESO TOTALE MISCELA FINALE</strong>: 717g → <strong>Volume: 709ml</strong></td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="section parametri">
+            <h2>⚙️ Parametri Tecnici</h2>
+            <table>
+                <tr>
+                    <th>Parametro</th>
+                    <th>Valore Calcolato</th>
+                    <th>Target Ninja Creami</th>
+                    <th>Status</th>
+                </tr>
+                <tr>
+                    <td>POD - Potere Dolcificante (%)</td>
+                    <td class="parametro-valore">15,1%</td>
+                    <td>15,0%</td>
+                    <td class="status-ok">✅ Perfetto</td>
+                </tr>
+                <tr>
+                    <td>PAC - Potere Anti-Congelante</td>
+                    <td class="parametro-valore">113</td>
+                    <td>110-115</td>
+                    <td class="status-ok">✅ Ottimale</td>
+                </tr>
+                <tr>
+                    <td>Solidi Totali (%)</td>
+                    <td class="parametro-valore">37,2%</td>
+                    <td>34-40%</td>
+                    <td class="status-ok">✅ Perfetto</td>
+                </tr>
+                <tr>
+                    <td>Grassi Totali (%)</td>
+                    <td class="parametro-valore">9,1%</td>
+                    <td>7-10%</td>
+                    <td class="status-ok">✅ Cremoso</td>
+                </tr>
+                <tr>
+                    <td>Proteine Totali (%)</td>
+                    <td class="parametro-valore">5,8%</td>
+                    <td>4-6%</td>
+                    <td class="status-ok">✅ Bilanciato</td>
+                </tr>
+            </table>
+            
+            <div class="alert alert-info">
+                <strong>🎯 Bilanciamento Zuccheri:</strong><br>
+                • Saccarosio: 47g (55% del blend)<br>
+                • Destrosio: 39g (45% del blend) - Limite massimo rispettato ✓<br>
+                • Lattosio naturale: 19,3g (da latte, panna e ricotta)<br>
+                • Zuccheri Gran Base: ~22g<br>
+                • Zuccheri Pasta Vaniglia: ~7g
+            </div>
+        </div>
+
+        <div class="section istruzioni">
+            <h2>👨‍🍳 Istruzioni Operative</h2>
+            
+            <div class="step">
+                <h3>FASE 1 - Preparazione Ingredienti</h3>
+                <p>• Pesa accuratamente tutti gli ingredienti della base (latte, panna, zuccheri, Gran Base)<br>
+                • Pre-miscela saccarosio e destrosio in una ciotola<br>
+                • Tieni da parte ricotta e pasta vaniglia (aggiunte a freddo)<br>
+                • Assicurati che la ricotta sia fresca e a temperatura ambiente</p>
+            </div>
+            
+            <div class="step">
+                <h3>FASE 2 - Pastorizzazione con Monsieur Cuisine</h3>
+                <p><strong>Step 2A:</strong> Versa latte e panna freddi nel boccale. Imposta 3 minuti, velocità 1, temperatura 50°C (raggiungerà ~40-42°C reali)<br><br>
+                <strong>Step 2B:</strong> Aggiungi in un colpo il mix zuccheri pre-miscelato + Gran Base. Chiudi e riparti immediatamente<br><br>
+                <strong>Step 2C:</strong> Pastorizza a 85°C reali per 6'30", velocità 1-2, temperatura impostata 130°C (evita ebollizione vigorosa)<br><br>
+                <strong>Step 2D:</strong> Mantieni 85°C per 2 minuti, velocità 3, temperatura impostata 85-90°C per omogeneizzare</p>
+            </div>
+            
+            <div class="step">
+                <h3>FASE 3 - Aggiunte a Freddo (40°C)</h3>
+                <p>• Raffredda rapidamente la base a ~40°C (usa bagno di ghiaccio o attendi)<br>
+                • Aggiungi la ricotta romana fresca (75g) e mescola delicatamente a mano con frusta<br>
+                • Aggiungi la pasta Vaniglia Antica (16g) e incorpora con movimenti delicati<br>
+                • NON usare mixer elettrico per non rompere l'emulsione della ricotta</p>
+            </div>
+            
+            <div class="step">
+                <h3>FASE 4 - Maturazione</h3>
+                <p>• Versa la miscela nel bicchiere Ninja Creami Deluxe (max 709ml)<br>
+                • Chiudi ermeticamente con il coperchio<br>
+                • Matura in frigorifero a +4°C per 12-18 ore (ottimale: 16 ore)<br>
+                • La maturazione permette l'idratazione degli stabilizzanti e lo sviluppo degli aromi</p>
+            </div>
+            
+            <div class="step">
+                <h3>FASE 5 - Congelamento</h3>
+                <p>• Trasferisci il bicchiere in freezer a -18°C o inferiore<br>
+                • Congela in posizione verticale per 18-24 ore (minimo 14h)<br>
+                • Il congelamento deve essere continuo e ininterrotto<br>
+                • NON aprire il bicchiere durante il congelamento</p>
+            </div>
+            
+            <div class="step">
+                <h3>FASE 6 - Mantecazione Ninja Creami</h3>
+                <p>• Rimuovi il coperchio e installa la lama di mantecazione<br>
+                • Seleziona programma <strong>GELATO</strong><br>
+                • Avvia il ciclo e attendi il completamento<br>
+                • Se la consistenza è farinosa: aggiungi 10-15g di latte freddo nel foro centrale e fai <strong>RE-SPIN</strong><br>
+                • Per texture extra cremosa: fai un secondo <strong>RE-SPIN</strong> senza aggiunte</p>
+            </div>
+            
+            <div class="step">
+                <h3>FASE 7 - Servizio</h3>
+                <p>• Il gelato è pronto immediatamente dopo la mantecazione<br>
+                • Servi con spatola o cucchiaio da gelato<br>
+                • Conserva in freezer a -18°C in contenitore ermetico<br>
+                • Consumo ottimale entro 3-5 giorni dalla mantecazione</p>
+            </div>
+        </div>
+
+        <div class="section note">
+            <h2>📝 Note Tecniche e Consigli</h2>
+            
+            <div class="alert alert-success">
+                <strong>🎨 Texture Prevista:</strong><br>
+                Cremosa e vellutata con leggera granulosità caratteristica della ricotta. La struttura è compatta grazie all'overrun basso della Ninja Creami, con spatolabilità ottimale a -12/-14°C. La ricotta apporta una texture unica, leggermente rustica ma elegante.
+            </div>
+            
+            <div class="alert alert-success">
+                <strong>👅 Gusto Previsto:</strong><br>
+                Dolcezza equilibrata (POD 15,1%) con note delicate di ricotta fresca e vaniglia naturale. Il sapore è pulito e latteo, con la vaniglia che esalta senza coprire la delicatezza della ricotta romana. Retrogusto persistente e piacevole, tipico dei gelati artigianali di alta qualità.
+            </div>
+            
+            <div class="alert alert-info">
+                <strong>🔬 Analisi Tecnica:</strong><br>
+                • <strong>Ricotta Romana:</strong> 15% grassi, 3,5% lattosio, apporta cremosità e proteine nobili<br>
+                • <strong>Bilanciamento PAC 113:</strong> Ottimale per Ninja Creami, garantisce spatolabilità perfetta<br>
+                • <strong>Destrosio al limite (45%):</strong> Massimizza anticongelante rispettando i limiti operativi<br>
+                • <strong>Grassi 9,1%:</strong> Equilibrio perfetto tra cremosità e leggerezza<br>
+                • <strong>Proteine 5,8%:</strong> Contribuiscono a struttura e corpo del gelato
+            </div>
+            
+            <div class="alert alert-info">
+                <strong>⚠️ Attenzioni Particolari:</strong><br>
+                • La ricotta deve essere freschissima (max 2 giorni dalla produzione)<br>
+                • NON aggiungere la ricotta durante la pastorizzazione (coagulerebbe)<br>
+                • Mescolare delicatamente per non rompere la struttura della ricotta<br>
+                • Se la ricotta è molto umida, scolarla leggermente prima dell'uso<br>
+                • La pasta vaniglia Pregel è concentrata: rispettare il dosaggio
+            </div>
+            
+            <div class="alert alert-success">
+                <strong>🎭 Varianti Suggerite:</strong><br>
+                • <strong>Ricotta e Miele:</strong> Sostituisci 20g saccarosio con 25g miele millefiori (aggiungere a freddo)<br>
+                • <strong>Ricotta e Limone:</strong> Aggiungi 5g scorza di limone grattugiata + 10ml succo di limone<br>
+                • <strong>Ricotta e Pistacchio:</strong> Sostituisci vaniglia con 45g Pasta Pistacchissimo Pregel<br>
+                • <strong>Ricotta e Amarena:</strong> Aggiungi 60g amarene sciroppate dopo mantecazione (MIX-IN)
+            </div>
+            
+            <img src="https://images.unsplash.com/photo-1488477181946-6428a0291777?w=400&h=200&fit=crop&crop=center" 
+                 alt="Ricotta fresca" 
+                 style="width: 100%; max-width: 400px; border-radius: 10px; margin: 20px auto; display: block; box-shadow: 0 5px 15px rgba(0,0,0,0.2);"
+                 onerror="this.src='https://via.placeholder.com/400x200/43e97b/ffffff?text=Ricotta+Fresca'">
+        </div>
+    </div>
+</body>
+</html>

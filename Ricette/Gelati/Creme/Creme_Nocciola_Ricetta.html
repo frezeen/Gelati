@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ricetta Gelato Nocciola - Ninja Creami Deluxe</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background-attachment: fixed;
+            animation: backgroundShift 10s ease-in-out infinite alternate;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        @keyframes backgroundShift {
+            0% { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+            100% { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            animation: slideIn 1s ease-out;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .header {
+            background: linear-gradient(135deg, #8B4513, #D2691E);
+            color: white;
+            padding: 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '🌰';
+            position: absolute;
+            font-size: 100px;
+            opacity: 0.1;
+            top: 20px;
+            right: 20px;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .header h1 {
+            font-size: 3em;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin: 20px 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .section {
+            margin: 30px;
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .ingredienti {
+            background: linear-gradient(135deg, rgba(139, 69, 19, 0.9), rgba(210, 105, 30, 0.9));
+            color: white;
+        }
+
+        .parametri {
+            background: linear-gradient(135deg, rgba(75, 172, 198, 0.9), rgba(0, 242, 254, 0.9));
+            color: white;
+        }
+
+        .istruzioni {
+            background: linear-gradient(135deg, rgba(240, 143, 1, 0.9), rgba(199, 115, 10, 0.9));
+            color: white;
+        }
+
+        .note {
+            background: linear-gradient(135deg, rgba(106, 153, 78, 0.9), rgba(82, 122, 58, 0.9));
+            color: white;
+        }
+
+        .section h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        th {
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+            color: #333;
+            font-weight: 500;
+        }
+
+        tr:nth-child(even) {
+            background: rgba(248, 249, 250, 0.8);
+        }
+
+        tr:hover {
+            background: rgba(233, 236, 239, 0.8);
+            transition: all 0.3s ease;
+        }
+
+        .parametro-valore {
+            font-weight: 700;
+            color: #2E86AB;
+            font-size: 1.1em;
+        }
+
+        .status-ok {
+            color: #28a745;
+            font-weight: bold;
+        }
+
+        .status-warning {
+            color: #ffc107;
+            font-weight: bold;
+        }
+
+        .alert {
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            border-left: 5px solid;
+        }
+
+        .alert-success {
+            background: rgba(212, 237, 218, 0.9);
+            border-color: #28a745;
+            color: #155724;
+        }
+
+        .alert-info {
+            background: rgba(209, 236, 241, 0.9);
+            border-color: #17a2b8;
+            color: #0c5460;
+        }
+
+        .step {
+            background: rgba(255, 255, 255, 0.2);
+            margin: 15px 0;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid white;
+            transition: all 0.3s ease;
+        }
+
+        .step:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateX(10px);
+        }
+
+        .navigation {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            padding: 20px;
+            text-align: center;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            margin: 10px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .floating-element {
+            position: absolute;
+            font-size: 2em;
+            opacity: 0.1;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .floating-1 { top: 10%; right: 10%; animation-delay: 0s; }
+        .floating-2 { top: 60%; left: 5%; animation-delay: 2s; }
+        .floating-3 { top: 30%; right: 5%; animation-delay: 4s; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🌰 Gelato Nocciola</h1>
+            <p>Ricetta professionale per Ninja Creami Deluxe - Volume: 709ml</p>
+            <div class="floating-element floating-1">🥛</div>
+            <div class="floating-element floating-2">🍯</div>
+            <div class="floating-element floating-3">⚗️</div>
+        </div>
+
+        <img src="https://images.unsplash.com/photo-1567206563064-6f60f40a2b57?w=400&h=300&fit=crop&crop=center" 
+             alt="Gelato alla Nocciola" class="hero-image"
+             onerror="this.src='https://via.placeholder.com/400x300/8B4513/ffffff?text=Gelato+Nocciola'">
+
+        <div class="section ingredienti">
+            <h2>📋 Ingredienti</h2>
+            <table>
+                <tr>
+                    <th>Ingrediente</th>
+                    <th>Peso (g)</th>
+                    <th>% su X</th>
+                    <th>Note</th>
+                </tr>
+                <tr>
+                    <td>🥛 Latte intero 3,5% grassi</td>
+                    <td class="parametro-valore">533</td>
+                    <td>71,43%</td>
+                    <td>+2% evaporazione inclusa</td>
+                </tr>
+                <tr>
+                    <td>🥛 Panna LA 35 Trevalli Professional</td>
+                    <td class="parametro-valore">53</td>
+                    <td>7,14%</td>
+                    <td>35% grassi, densità 1,008</td>
+                </tr>
+                <tr>
+                    <td>🍯 Saccarosio</td>
+                    <td class="parametro-valore">64</td>
+                    <td>8,60%</td>
+                    <td>Dolcezza principale</td>
+                </tr>
+                <tr>
+                    <td>🍯 Destrosio</td>
+                    <td class="parametro-valore">53</td>
+                    <td>7,12%</td>
+                    <td>45% del blend zuccherino</td>
+                </tr>
+                <tr>
+                    <td>⚗️ Gran Base Pregel</td>
+                    <td class="parametro-valore">52</td>
+                    <td>7,14%</td>
+                    <td>Stabilizzante professionale</td>
+                </tr>
+                <tr>
+                    <td>🌰 Pasta Nocciola 99% Pregel</td>
+                    <td class="parametro-valore">51</td>
+                    <td>-</td>
+                    <td>Aggiungere a 40°C (70g/kg X)</td>
+                </tr>
+            </table>
+            <div class="alert alert-info">
+                <strong>Peso totale miscela:</strong> 806g | <strong>Volume finale:</strong> 709ml
+            </div>
+        </div>
+
+        <div class="section parametri">
+            <h2>⚙️ Parametri Tecnici</h2>
+            <table>
+                <tr>
+                    <th>Parametro</th>
+                    <th>Valore Calcolato</th>
+                    <th>Target Ninja Creami</th>
+                    <th>Status</th>
+                </tr>
+                <tr>
+                    <td>POD (%)</td>
+                    <td class="parametro-valore">16,3</td>
+                    <td>15,0</td>
+                    <td class="status-warning">⚠️ Leggermente alto</td>
+                </tr>
+                <tr>
+                    <td>PAC</td>
+                    <td class="parametro-valore">115</td>
+                    <td>115</td>
+                    <td class="status-ok">✅ Perfetto</td>
+                </tr>
+                <tr>
+                    <td>Solidi Totali (%)</td>
+                    <td class="parametro-valore">37,2</td>
+                    <td>34-40%</td>
+                    <td class="status-ok">✅ Ottimale</td>
+                </tr>
+                <tr>
+                    <td>Grassi (%)</td>
+                    <td class="parametro-valore">8,4</td>
+                    <td>7-10%</td>
+                    <td class="status-ok">✅ Perfetto</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="section istruzioni">
+            <h2>👨‍🍳 Istruzioni Operative</h2>
+            
+            <div class="step">
+                <strong>FASE 1 - Preparazione Base (Monsieur Cuisine)</strong><br>
+                • Versare latte (533g) e panna (53g) freddi nel boccale<br>
+                • Impostare 3 minuti, velocità 1, temperatura 50°C<br>
+                • Temperatura reale raggiunta: ~40-42°C
+            </div>
+
+            <div class="step">
+                <strong>FASE 2 - Aggiunta Zuccheri e Stabilizzanti</strong><br>
+                • Pre-miscelare saccarosio (64g) + destrosio (53g) + Gran Base (52g)<br>
+                • Aggiungere tutto in un colpo nella base calda<br>
+                • Chiudere e ripartire immediatamente
+            </div>
+
+            <div class="step">
+                <strong>FASE 3A - Pastorizzazione</strong><br>
+                • Impostare temperatura 130°C, velocità 1-2<br>
+                • Portare a 85°C reali e mantenere per 6'30"<br>
+                • Evitare ebollizione vigorosa
+            </div>
+
+            <div class="step">
+                <strong>FASE 3B - Mantenimento</strong><br>
+                • Ridurre temperatura a 85-90°C impostati<br>
+                • Aumentare velocità a 3<br>
+                • Mantenere per 2 minuti
+            </div>
+
+            <div class="step">
+                <strong>FASE 4 - Aggiunta Pasta Nocciola</strong><br>
+                • Raffreddare la base a ~40°C<br>
+                • Aggiungere Pasta Nocciola 99% (51g)<br>
+                • Mescolare delicatamente a mano per 2-3 minuti
+            </div>
+
+            <div class="step">
+                <strong>FASE 5 - Maturazione e Congelamento</strong><br>
+                • Versare nel bicchiere Ninja Creami (max 709ml)<br>
+                • Maturazione: 8-24h a +4°C<br>
+                • Congelamento: 14-24h a -18°C verticale
+            </div>
+
+            <div class="step">
+                <strong>FASE 6 - Mantecazione</strong><br>
+                • Ciclo GELATO su Ninja Creami Deluxe<br>
+                • Se necessario: RE-SPIN per texture ottimale<br>
+                • Se troppo duro: +10-15g latte freddo e RE-SPIN
+            </div>
+        </div>
+
+        <div class="section note">
+            <h2>🔬 Simulazione Sensoriale & Note</h2>
+            
+            <div class="alert alert-success">
+                <strong>Texture Prevista:</strong> Cremosa e vellutata, con la caratteristica densità del Ninja Creami. La pasta nocciola 99% garantisce intensità e purezza del sapore senza compromettere la struttura.
+            </div>
+
+            <div class="alert alert-info">
+                <strong>Gusto Previsto:</strong> Nocciola intensa e autentica, dolcezza bilanciata leggermente sopra la media (POD 16,3%) che esalta il carattere tostato delle nocciole. Retrogusto persistente e avvolgente.
+            </div>
+
+            <p><strong>Note Tecniche:</strong></p>
+            <ul style="margin-left: 20px; margin-top: 10px;">
+                <li>La Pasta Nocciola 99% Pregel non contiene zuccheri aggiunti, garantendo purezza del sapore</li>
+                <li>Il PAC 115 è ottimale per la mantecazione meccanica del Ninja Creami</li>
+                <li>L'overrun basso della macchina concentra il sapore nocciola</li>
+                <li>Allergeni: contiene latte, panna e frutta a guscio (nocciole)</li>
+                <li>Conservazione: 3-5 giorni a -18°C in contenitore ermetico</li>
+            </ul>
+
+            <img src="https://images.unsplash.com/photo-1599599810769-bcde5a160d32?w=400&h=250&fit=crop&crop=center" 
+                 alt="Nocciole tostate" style="width: 100%; height: 200px; object-fit: cover; border-radius: 10px; margin: 20px 0;"
+                 onerror="this.src='https://via.placeholder.com/400x250/D2691E/ffffff?text=Nocciole+Tostate'">
+        </div>
+
+        <div class="navigation">
+            <a href="Creme_Nocciola_Simulazione.html" class="btn">🔬 Vai alla Simulazione Dettagliata</a>
+            <a href="index.html" class="btn">🏠 Torna al Catalogo Creme</a>
+            <a href="../../../index.html" class="btn">📚 Menu Principale</a>
+        </div>
+    </div>
+</body>
+</html>

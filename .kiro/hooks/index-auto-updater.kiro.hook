@@ -1,0 +1,13 @@
+{
+  "enabled": true,
+  "name": "Index Auto Updater",
+  "description": "Automatically updates index.html files when new recipe HTML files are created. Updates category indexes and main catalog with new recipes, counters, and navigation links.",
+  "version": "1",
+  "when": {
+    "type": "userTriggered"
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "A new recipe HTML file has been created. Please automatically update the navigation system: \n\n1) Extract recipe name and category from the new file path\n2) Add recipe card to the appropriate category index.html file using the standardized template\n3) Update recipe counter in the category index\n4) Update main index.html counters (category count and total recipes)\n5) If this is the first recipe in a new category, change from 'Prossimamente' to '1 ricetta disponibile'\n6) Maintain alphabetical order in recipe lists\n7) Use consistent styling and navigation links\n8) **VERIFY AND FIX ALL NAVIGATION LINKS** - Check that all href links point to existing files and use correct relative paths\n9) **STANDARDIZE NAVIGATION STRUCTURE** - Ensure all recipe and simulation pages have consistent navigation with these exact patterns:\n   - Recipe pages: Link to Simulation → Link to Category Index → Link to Main Menu\n   - Simulation pages: Link to Recipe → Link to Main Menu → Link to Category Index\n10) **CHECK BIDIRECTIONAL LINKS** - Verify that recipe ↔ simulation links work in both directions\n11) **VALIDATE CATEGORY NAVIGATION** - Ensure all category index pages link correctly back to main index (../../../index.html)\n12) **FIX BROKEN LINKS** - Identify and correct any href paths that don't match actual file locations\n13) **MAINTAIN LINK CONSISTENCY** - Use standardized button text and styling across all navigation elements\n\nFollow the template and automation rules specified in 'Prompt Gelati.txt'. After updating navigation, verify all links are functional and follow the standardized structure for optimal user experience.\n"
+  }
+}

@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulazione Gelato Nocciola - Ninja Creami Deluxe</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #8B4513 0%, #D2691E 100%);
+            background-attachment: fixed;
+            animation: backgroundShift 12s ease-in-out infinite alternate;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        @keyframes backgroundShift {
+            0% { background: linear-gradient(135deg, #8B4513 0%, #D2691E 100%); }
+            100% { background: linear-gradient(135deg, #CD853F 0%, #DEB887 100%); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #654321, #8B4513);
+            color: white;
+            padding: 40px;
+            text-align: center;
+            position: relative;
+        }
+
+        .header h1 {
+            font-size: 2.8em;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            margin-bottom: 10px;
+        }
+
+        .section {
+            margin: 30px;
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .analisi-sensoriale {
+            background: linear-gradient(135deg, rgba(139, 69, 19, 0.9), rgba(160, 82, 45, 0.9));
+            color: white;
+        }
+
+        .parametri-avanzati {
+            background: linear-gradient(135deg, rgba(205, 133, 63, 0.9), rgba(222, 184, 135, 0.9));
+            color: #333;
+        }
+
+        .confronto-varianti {
+            background: linear-gradient(135deg, rgba(101, 67, 33, 0.9), rgba(139, 69, 19, 0.9));
+            color: white;
+        }
+
+        .ottimizzazioni {
+            background: linear-gradient(135deg, rgba(160, 82, 45, 0.9), rgba(205, 133, 63, 0.9));
+            color: white;
+        }
+
+        .section h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .sensory-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .sensory-card {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .sensory-card:hover {
+            background: rgba(255, 255, 255, 0.3);
+            animation: pulse 2s infinite;
+        }
+
+        .sensory-card h3 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 20px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 10px 0;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #28a745, #20c997);
+            border-radius: 10px;
+            transition: width 2s ease;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .comparison-table th {
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 15px;
+            text-align: left;
+        }
+
+        .comparison-table td {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+            color: #333;
+        }
+
+        .highlight {
+            background: linear-gradient(90deg, #ffeaa7, #fdcb6e);
+            font-weight: bold;
+            padding: 2px 8px;
+            border-radius: 5px;
+            color: #2d3436;
+        }
+
+        .alert {
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            border-left: 5px solid;
+        }
+
+        .alert-success {
+            background: rgba(212, 237, 218, 0.9);
+            border-color: #28a745;
+            color: #155724;
+        }
+
+        .alert-warning {
+            background: rgba(255, 243, 205, 0.9);
+            border-color: #ffc107;
+            color: #856404;
+        }
+
+        .alert-info {
+            background: rgba(209, 236, 241, 0.9);
+            border-color: #17a2b8;
+            color: #0c5460;
+        }
+
+        .navigation {
+            background: linear-gradient(135deg, #654321, #8B4513);
+            padding: 20px;
+            text-align: center;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            margin: 10px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .ingredient-analysis {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .ingredient-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 4px solid #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🔬 Simulazione Gelato Nocciola</h1>
+            <p>Analisi sensoriale predittiva e ottimizzazioni per Ninja Creami Deluxe</p>
+        </div>
+
+        <div class="section analisi-sensoriale">
+            <h2>👅 Analisi Sensoriale Predittiva</h2>
+            
+            <div class="sensory-grid">
+                <div class="sensory-card">
+                    <h3>🍯 Dolcezza</h3>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 82%;"></div>
+                    </div>
+                    <p><strong>POD 16,3%</strong> - Dolcezza leggermente sopra la media, perfetta per esaltare il carattere tostato delle nocciole senza sovrastare il sapore principale.</p>
+                </div>
+
+                <div class="sensory-card">
+                    <h3>🧊 Spatolabilità</h3>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 92%;"></div>
+                    </div>
+                    <p><strong>PAC 115</strong> - Consistenza ottimale per Ninja Creami. Facile da spalmare, mantecazione perfetta, nessun cristallo di ghiaccio.</p>
+                </div>
+
+                <div class="sensory-card">
+                    <h3>🥛 Cremosità</h3>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 88%;"></div>
+                    </div>
+                    <p><strong>Grassi 8,4%</strong> - Texture vellutata e avvolgente. L'overrun basso del Ninja Creami concentra la cremosità.</p>
+                </div>
+
+                <div class="sensory-card">
+                    <h3>🌰 Intensità Nocciola</h3>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 95%;"></div>
+                    </div>
+                    <p><strong>Pasta 99%</strong> - Sapore autentico e intenso. La pasta pura senza zuccheri garantisce purezza del gusto tostato.</p>
+                </div>
+
+                <div class="sensory-card">
+                    <h3>❄️ Resistenza Fusione</h3>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 85%;"></div>
+                    </div>
+                    <p><strong>Solidi 37,2%</strong> - Buona tenuta a temperatura ambiente. Fusione graduale e uniforme in bocca.</p>
+                </div>
+
+                <div class="sensory-card">
+                    <h3>🎯 Bilanciamento</h3>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 90%;"></div>
+                    </div>
+                    <p><strong>Equilibrio</strong> - Perfetto bilanciamento tra dolcezza, cremosità e intensità del sapore nocciola.</p>
+                </div>
+            </div>
+
+            <div class="alert alert-success">
+                <strong>Profilo Sensoriale Finale:</strong> Gelato dalla texture cremosa e compatta, caratteristico del Ninja Creami. Il sapore nocciola emerge immediatamente, intenso e autentico, con note tostate persistenti. La dolcezza leggermente elevata (16,3%) esalta perfettamente il carattere della nocciola senza risultare eccessiva. Retrogusto lungo e avvolgente.
+            </div>
+        </div>
+
+        <div class="section parametri-avanzati">
+            <h2>⚙️ Parametri Tecnici Avanzati</h2>
+            
+            <div class="ingredient-analysis">
+                <div class="ingredient-card">
+                    <h4>🥛 Base Lattea (586g)</h4>
+                    <p><strong>Latte:</strong> 533g (91% della base)</p>
+                    <p><strong>Panna:</strong> 53g (9% della base)</p>
+                    <p><strong>Contributo POD:</strong> 0,42% (lattosio)</p>
+                    <p><strong>Contributo PAC:</strong> 2,6 (lattosio)</p>
+                </div>
+
+                <div class="ingredient-card">
+                    <h4>🍯 Blend Zuccherino (117g)</h4>
+                    <p><strong>Saccarosio:</strong> 64g (55% del blend)</p>
+                    <p><strong>Destrosio:</strong> 53g (45% del blend)</p>
+                    <p><strong>Contributo POD:</strong> 12,2%</p>
+                    <p><strong>Contributo PAC:</strong> 18,6</p>
+                </div>
+
+                <div class="ingredient-card">
+                    <h4>⚗️ Gran Base Pregel (52g)</h4>
+                    <p><strong>Funzione:</strong> Stabilizzante/Emulsionante</p>
+                    <p><strong>Contributo POD:</strong> 3,3%</p>
+                    <p><strong>Contributo PAC:</strong> 7,3</p>
+                    <p><strong>Solidi aggiunti:</strong> ~45g</p>
+                </div>
+
+                <div class="ingredient-card">
+                    <h4>🌰 Pasta Nocciola (51g)</h4>
+                    <p><strong>Concentrazione:</strong> 99% nocciole</p>
+                    <p><strong>Zuccheri:</strong> 0% (pasta pura)</p>
+                    <p><strong>Grassi aggiunti:</strong> ~25g</p>
+                    <p><strong>Intensità:</strong> Massima</p>
+                </div>
+            </div>
+
+            <table class="comparison-table">
+                <tr>
+                    <th>Componente</th>
+                    <th>Peso (g)</th>
+                    <th>% Totale</th>
+                    <th>Funzione Principale</th>
+                    <th>Contributo Texture</th>
+                </tr>
+                <tr>
+                    <td>Base Lattea</td>
+                    <td>586</td>
+                    <td>72,7%</td>
+                    <td>Struttura cremosa</td>
+                    <td class="highlight">Cremosità base</td>
+                </tr>
+                <tr>
+                    <td>Zuccheri</td>
+                    <td>117</td>
+                    <td>14,5%</td>
+                    <td>Dolcezza + PAC</td>
+                    <td class="highlight">Spatolabilità</td>
+                </tr>
+                <tr>
+                    <td>Gran Base</td>
+                    <td>52</td>
+                    <td>6,5%</td>
+                    <td>Stabilizzazione</td>
+                    <td class="highlight">Consistenza</td>
+                </tr>
+                <tr>
+                    <td>Pasta Nocciola</td>
+                    <td>51</td>
+                    <td>6,3%</td>
+                    <td>Sapore intenso</td>
+                    <td class="highlight">Ricchezza</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="section confronto-varianti">
+            <h2>📊 Confronto con Varianti Alternative</h2>
+            
+            <table class="comparison-table">
+                <tr>
+                    <th>Variante</th>
+                    <th>POD (%)</th>
+                    <th>PAC</th>
+                    <th>Intensità Sapore</th>
+                    <th>Note</th>
+                </tr>
+                <tr>
+                    <td class="highlight">Ricetta Attuale</td>
+                    <td>16,3</td>
+                    <td>115</td>
+                    <td>Massima</td>
+                    <td>Bilanciamento ottimale</td>
+                </tr>
+                <tr>
+                    <td>Con Pasta 50%</td>
+                    <td>15,8</td>
+                    <td>118</td>
+                    <td>Media</td>
+                    <td>Sapore meno intenso</td>
+                </tr>
+                <tr>
+                    <td>Solo Saccarosio</td>
+                    <td>16,3</td>
+                    <td>95</td>
+                    <td>Massima</td>
+                    <td>Troppo duro per Ninja Creami</td>
+                </tr>
+                <tr>
+                    <td>Con Eritritolo 20%</td>
+                    <td>14,2</td>
+                    <td>125</td>
+                    <td>Massima</td>
+                    <td>Effetto fresco indesiderato</td>
+                </tr>
+            </table>
+
+            <div class="alert alert-info">
+                <strong>Perché questa formulazione è ottimale:</strong> La combinazione di Pasta Nocciola 99% con il blend zuccherino 55% saccarosio / 45% destrosio garantisce il massimo sapore nocciola mantenendo la spatolabilità perfetta per il Ninja Creami Deluxe.
+            </div>
+        </div>
+
+        <div class="section ottimizzazioni">
+            <h2>🎯 Ottimizzazioni e Varianti</h2>
+            
+            <div class="alert alert-warning">
+                <strong>Possibili Aggiustamenti Post-Test:</strong>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li><strong>Se troppo dolce:</strong> Ridurre saccarosio a 58g, aumentare destrosio a 59g</li>
+                    <li><strong>Se poco intenso:</strong> Aumentare pasta nocciola a 60g (85g/kg X)</li>
+                    <li><strong>Se troppo duro:</strong> Aggiungere 10-15g latte freddo prima del RE-SPIN</li>
+                    <li><strong>Se troppo molle:</strong> Ridurre destrosio a 45g, aumentare saccarosio a 72g</li>
+                </ul>
+            </div>
+
+            <div class="sensory-grid">
+                <div class="sensory-card">
+                    <h3>🌰 Variante Nocciola Intensa</h3>
+                    <p><strong>Modifica:</strong> Pasta nocciola 70g (95g/kg X)</p>
+                    <p><strong>Effetto:</strong> Sapore più pronunciato, leggera riduzione cremosità</p>
+                    <p><strong>Target:</strong> Amanti sapori intensi</p>
+                </div>
+
+                <div class="sensory-card">
+                    <h3>🍯 Variante Meno Dolce</h3>
+                    <p><strong>Modifica:</strong> POD target 14,5%</p>
+                    <p><strong>Blend:</strong> 55g saccarosio + 62g destrosio</p>
+                    <p><strong>Target:</strong> Palati meno dolci</p>
+                </div>
+
+                <div class="sensory-card">
+                    <h3>🥛 Variante Extra Cremosa</h3>
+                    <p><strong>Modifica:</strong> Panna +10g, latte -10g</p>
+                    <p><strong>Effetto:</strong> Grassi 9,2%, texture più ricca</p>
+                    <p><strong>Target:</strong> Massima cremosità</p>
+                </div>
+
+                <div class="sensory-card">
+                    <h3>⚡ Variante Rapida</h3>
+                    <p><strong>Modifica:</strong> Maturazione 4h invece di 8-24h</p>
+                    <p><strong>Effetto:</strong> Texture leggermente meno sviluppata</p>
+                    <p><strong>Target:</strong> Preparazione veloce</p>
+                </div>
+            </div>
+
+            <div class="alert alert-success">
+                <strong>Raccomandazione Finale:</strong> La ricetta attuale rappresenta il punto di equilibrio ottimale per il Ninja Creami Deluxe. I parametri sono stati calibrati specificamente per l'overrun basso e la mantecazione meccanica della macchina. Eventuali modifiche dovrebbero essere testate in piccole quantità.
+            </div>
+        </div>
+
+        <div class="navigation">
+            <a href="Creme_Nocciola_Ricetta.html" class="btn">📋 Torna alla Ricetta</a>
+            <a href="index.html" class="btn">🏠 Catalogo Creme</a>
+            <a href="../../../index.html" class="btn">📚 Menu Principale</a>
+        </div>
+    </div>
+</body>
+</html>

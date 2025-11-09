@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catalogo Ricette Gelati Ninja Creami Deluxe</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; }
+        
+        body { 
+            font-family: 'Poppins', sans-serif; 
+            margin: 0; 
+            padding: 20px; 
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            animation: backgroundShift 15s ease-in-out infinite alternate;
+        }
+        
+        @keyframes backgroundShift {
+            0% { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+            25% { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
+            50% { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
+            75% { background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); }
+            100% { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); }
+        }
+        
+        .container { 
+            max-width: 1400px; 
+            margin: 0 auto; 
+            background: rgba(255,255,255,0.95); 
+            border-radius: 20px; 
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1); 
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            animation: slideUp 0.8s ease-out;
+        }
+        
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        .header { 
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24); 
+            color: white; 
+            padding: 50px; 
+            text-align: center; 
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header h1 { 
+            margin: 0; 
+            font-size: 3.5em; 
+            font-weight: 700;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.3); 
+            animation: titleGlow 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes titleGlow {
+            from { text-shadow: 3px 3px 6px rgba(0,0,0,0.3), 0 0 20px rgba(255,255,255,0.5); }
+            to { text-shadow: 3px 3px 6px rgba(0,0,0,0.3), 0 0 30px rgba(255,255,255,0.8); }
+        }
+        
+        .categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 40px;
+        }
+        
+        .category-card {
+            background: linear-gradient(135deg, var(--card-color-1), var(--card-color-2));
+            border-radius: 20px;
+            padding: 30px;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        
+        .category-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+        
+        .category-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 10px,
+                rgba(255,255,255,0.1) 10px,
+                rgba(255,255,255,0.1) 20px
+            );
+            animation: movePattern 20s linear infinite;
+        }
+        
+        @keyframes movePattern {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+        
+        .category-card h2 {
+            font-size: 2em;
+            margin: 0 0 15px 0;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .category-card p {
+            font-size: 1.1em;
+            opacity: 0.9;
+            position: relative;
+            z-index: 2;
+            margin: 0;
+        }
+        
+        .category-card .icon {
+            font-size: 3em;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            opacity: 0.3;
+            z-index: 1;
+        }
+        
+        .recipe-count {
+            background: rgba(255,255,255,0.2);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            align-self: flex-start;
+            margin-top: 15px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .creme { --card-color-1: #667eea; --card-color-2: #764ba2; }
+        .frutta { --card-color-1: #f093fb; --card-color-2: #f5576c; }
+        .sorbetti { --card-color-1: #4facfe; --card-color-2: #00f2fe; }
+        .cioccolato { --card-color-1: #8B4513; --card-color-2: #D2691E; }
+        .speciali { --card-color-1: #43e97b; --card-color-2: #38f9d7; }
+        
+        .stats {
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            padding: 30px;
+            text-align: center;
+            color: white;
+        }
+        
+        .stats h3 {
+            margin: 0 0 20px 0;
+            font-size: 1.5em;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+        }
+        
+        .stat-item {
+            background: rgba(255,255,255,0.2);
+            padding: 20px;
+            border-radius: 15px;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+        
+        .stat-number {
+            font-size: 2em;
+            font-weight: 700;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🍨 Catalogo Gelati</h1>
+            <h2>Ninja Creami Deluxe</h2>
+            <p>Ricette professionali ottimizzate per volume 709ml</p>
+        </div>
+        
+        <div class="categories">
+            <a href="Ricette/Gelati/Creme/index.html" class="category-card creme">
+                <div class="icon">🥛</div>
+                <h2>Gelati alle Creme</h2>
+                <p>Base latte e panna con aromi classici: vaniglia, nocciola, pistacchio, caffè e creme composite come la Zuppa Inglese.</p>
+                <div class="recipe-count">5 ricette disponibili</div>
+            </a>
+            
+            <a href="Ricette/Gelati/Frutta/index.html" class="category-card frutta">
+                <div class="icon">🍓</div>
+                <h2>Gelati alla Frutta</h2>
+                <p>Frutta fresca con base cremosa: fragola, pesca, frutti di bosco, agrumi e frutta esotica.</p>
+                <div class="recipe-count">Prossimamente</div>
+            </a>
+            
+            <a href="Ricette/Gelati/Sorbetti/index.html" class="category-card sorbetti">
+                <div class="icon">🧊</div>
+                <h2>Sorbetti</h2>
+                <p>Base acqua e zuccheri senza latte: sorbetti di frutta, agrumi, erbe e spezie per il massimo della freschezza.</p>
+                <div class="recipe-count">Prossimamente</div>
+            </a>
+            
+            <a href="Ricette/Gelati/Cioccolato/index.html" class="category-card cioccolato">
+                <div class="icon">🍫</div>
+                <h2>Gelati al Cioccolato</h2>
+                <p>Cioccolato fondente, al latte, bianco e cacao amaro con varianti gourmet e abbinamenti speciali.</p>
+                <div class="recipe-count">Prossimamente</div>
+            </a>
+            
+            <a href="Ricette/Gelati/Speciali/index.html" class="category-card speciali">
+                <div class="icon">⭐</div>
+                <h2>Gelati Speciali</h2>
+                <p>Ricette innovative: gelati alcolici, salati, alle spezie, vegani e senza zucchero per palati ricercati.</p>
+                <div class="recipe-count">Prossimamente</div>
+            </a>
+        </div>
+        
+        <div class="stats">
+            <h3>📊 Statistiche Catalogo</h3>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span class="stat-number">5</span>
+                    <span>Ricette Totali</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">5</span>
+                    <span>Categorie</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">709ml</span>
+                    <span>Volume Standard</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">100%</span>
+                    <span>Ninja Creami</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
