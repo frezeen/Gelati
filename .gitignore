@@ -69,6 +69,7 @@ link_checker*.html
 # File HTML principali
 !index.html
 !*.html
+!README.md
 
 # Cartella Ricette (solo HTML)
 !Ricette/
