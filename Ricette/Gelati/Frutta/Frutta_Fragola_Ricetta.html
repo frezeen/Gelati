@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ricetta Gelato Fragola Fresca - Ninja Creami Deluxe</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; }
+        
+        body { 
+            font-family: 'Poppins', sans-serif; 
+            margin: 0; 
+            padding: 20px; 
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            min-height: 100vh;
+            animation: backgroundShift 15s ease-in-out infinite alternate;
+        }
+        
+        @keyframes backgroundShift {
+            0% { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
+            50% { background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%); }
+            100% { background: linear-gradient(135deg, #f5576c 0%, #ff8e53 100%); }
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(15deg); }
+        }
+        
+        .container { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            background: rgba(255,255,255,0.96); 
+            border-radius: 20px; 
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15); 
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+        
+        .header { 
+            background: linear-gradient(135deg, #f093fb, #f5576c); 
+            color: white; 
+            padding: 40px; 
+            text-align: center; 
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: '🍓';
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 3.5em;
+            opacity: 0.4;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .header h1 { 
+            margin: 0; 
+            font-size: 3em; 
+            font-weight: 700;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        .header p {
+            font-size: 1.2em;
+            margin-top: 5px;
+            opacity: 0.9;
+        }
+        
+        .header-image {
+            width: 100%;
+            max-width: 400px;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin: 20px 0;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        
+        .nav-buttons {
+            margin: 20px 0;
+        }
+        
+        .nav-button {
+            display: inline-block;
+            padding: 12px 25px;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            margin: 5px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+            font-weight: 600;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+        
+        .nav-button:hover {
+            background: rgba(255,255,255,0.4);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .section { 
+            margin: 30px; 
+            padding: 30px; 
+            border-radius: 20px; 
+            position: relative;
+            transition: all 0.3s ease;
+            color: white;
+        }
+        
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .ingredienti { 
+            background: linear-gradient(135deg, #f5576c, #f093fb); 
+        }
+        
+        .istruzioni { 
+            background: linear-gradient(135deg, #ff8e53, #f5576c); 
+        }
+        
+        .parametri { 
+            background: linear-gradient(135deg, #4facfe, #00f2fe); 
+        }
+        
+        .note { 
+            background: linear-gradient(135deg, #43e97b, #38f9d7); 
+        }
+        
+        .section h2 {
+            margin: 0 0 20px 0;
+            font-size: 2em;
+            font-weight: 600;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        /* Tabelle ad altissimo contrasto: Testo Nero su Sfondo Bianco */
+        table { 
+            width: 100%; 
+            border-collapse: collapse; 
+            margin: 20px 0; 
+            background: #ffffff; 
+            border-radius: 15px; 
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        
+        th { 
+            background: #000000; 
+            color: #ffffff; 
+            padding: 15px; 
+            text-align: left; 
+            font-weight: 600;
+        }
+        
+        td { 
+            padding: 15px; 
+            border-bottom: 1px solid #e0e0e0; 
+            color: #000000;
+            font-weight: 500;
+        }
+        
+        tr:nth-child(even) { 
+            background: #f9f9f9; 
+        }
+        
+        tr:hover {
+            background: rgba(245, 87, 108, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .parametro-valore { 
+            font-weight: bold; 
+            font-size: 1.1em;
+        }
+        
+        .status-ok { 
+            color: #28a745; 
+            font-weight: bold; 
+        }
+        
+        .status-warning { 
+            color: #ffc107; 
+            font-weight: bold; 
+        }
+        
+        .step { 
+            background: rgba(255,255,255,0.25); 
+            margin: 15px 0; 
+            padding: 20px; 
+            border-radius: 15px; 
+            border-left: 5px solid white;
+            transition: all 0.3s ease;
+        }
+        
+        .step:hover {
+            background: rgba(255,255,255,0.35);
+            transform: translateX(10px);
+        }
+        
+        .alert { 
+            padding: 20px; 
+            margin: 20px 0; 
+            border-radius: 15px; 
+            backdrop-filter: blur(5px);
+            color: #333333;
+        }
+        
+        .alert-success { 
+            background: rgba(212, 237, 218, 0.95); 
+            border: 2px solid #c3e6cb; 
+            color: #155724; 
+        }
+        
+        .alert-warning { 
+            background: rgba(255, 243, 205, 0.95); 
+            border: 2px solid #ffeaa7; 
+            color: #856404; 
+        }
+        
+        .ingredient-emoji {
+            font-size: 1.2em;
+            margin-right: 8px;
+        }
+        
+        .floating-element {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 2.5em;
+            opacity: 0.3;
+            animation: float 8s ease-in-out infinite;
+        }
+        
+        .printable-title { display: none; }
+        
+        @page {
+            size: A4;
+            margin: 0.5cm !important;
+        }
+        @media print {
+            body {
+                background: none !important;
+                color: #000000 !important;
+                padding: 0 !important;
+                margin: 0 !important;
+                font-size: 8.5pt !important;
+                line-height: 1.2 !important;
+            }
+            .container {
+                box-shadow: none !important;
+                border-radius: 0 !important;
+                background: none !important;
+                padding: 0 !important;
+                margin: 0 !important;
+                max-width: 100% !important;
+            }
+            .header, .nav-buttons, .parametri, .note, .floating-element, .header-image {
+                display: none !important;
+            }
+            .section {
+                margin: 2px 0 !important;
+                padding: 2px 0 !important;
+                box-shadow: none !important;
+                background: none !important;
+                color: #000000 !important;
+                transform: none !important;
+            }
+            .section h2 {
+                color: #000000 !important;
+                font-size: 11pt !important;
+                border-bottom: 1px solid #000000 !important;
+                padding-bottom: 2px !important;
+                margin: 0 0 5px 0 !important;
+            }
+            table {
+                box-shadow: none !important;
+                border: 1px solid #000000 !important;
+                margin: 5px 0 !important;
+                background: #ffffff !important;
+                width: 100% !important;
+            }
+            th {
+                background: #f0f0f0 !important;
+                color: #000000 !important;
+                border: 1px solid #000000 !important;
+                padding: 4px 6px !important;
+                font-size: 8.5pt !important;
+            }
+            td {
+                border: 1px solid #000000 !important;
+                color: #000000 !important;
+                padding: 4px 6px !important;
+                font-size: 8pt !important;
+            }
+            .step {
+                background: none !important;
+                border-left: 2px solid #000000 !important;
+                padding: 4px 6px !important;
+                margin: 3px 0 !important;
+                color: #000000 !important;
+                transform: none !important;
+                page-break-inside: avoid;
+            }
+            .step h3, .step h4, .step strong {
+                font-size: 8.5pt !important;
+                margin-bottom: 2px !important;
+                color: #000000 !important;
+            }
+            .step p {
+                font-size: 8pt !important;
+                color: #000000 !important;
+                margin: 0 !important;
+            }
+            .printable-title {
+                display: block !important;
+                text-align: center;
+                margin-bottom: 8px;
+                border-bottom: 2px solid #000000;
+                padding-bottom: 4px;
+            }
+            .printable-title h1 {
+                font-size: 14pt !important;
+                margin: 0 !important;
+                color: #000000 !important;
+            }
+            .printable-title p {
+                font-size: 8.5pt !important;
+                margin: 2px 0 0 0 !important;
+                color: #444444 !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Sezione stampabile A4 (nascosta su schermo) -->
+        <div class="printable-title">
+            <h1>🍓 Gelato alla Fragola Fresca</h1>
+            <p>Ricetta Pratica per Ninja Creami Deluxe - Volume: 709ml</p>
+        </div>
+
+        <div class="header">
+            <h1>🍓 Gelato alla Fragola Fresca</h1>
+            <p>Ricetta professionale bilanciata per Ninja Creami Deluxe - Volume: 709ml</p>
+            <img src="https://images.unsplash.com/photo-1518635017498-87f514b751ba?w=400&h=250&fit=crop&crop=center" 
+                 alt="Gelato alla Fragola" class="header-image"
+                 onerror="this.src='https://via.placeholder.com/400x250/f5576c/ffffff?text=Gelato+Fragola'">
+            <div class="nav-buttons">
+                <a href="Frutta_Fragola_Simulazione.html" class="nav-button">🔬 Vai alla Simulazione Sensoriale</a>
+                <a href="index.html" class="nav-button">🍓 Torna alle Ricette alla Frutta</a>
+                <a href="../../../index.html" class="nav-button">🏠 Menu Principale</a>
+                <button onclick="window.print()" class="nav-button" style="cursor: pointer; font-family: inherit; background: rgba(0,0,0,0.3); border: 1px solid white;">🖨️ Stampa Ricetta A4</button>
+            </div>
+        </div>
+
+        <div class="section ingredienti">
+            <div class="floating-element">🥛</div>
+            <h2>📋 Tabella Ingredienti</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Ingrediente</th>
+                        <th>Peso (g)</th>
+                        <th>% su X_base</th>
+                        <th>Note e Fase di Inserimento</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="ingredient-emoji">🥛</span>Latte intero 3,5% grassi</td>
+                        <td><strong>428</strong></td>
+                        <td>70,00%</td>
+                        <td>Fase 1 (+2% evaporazione inclusa)</td>
+                    </tr>
+                    <tr>
+                        <td><span class="ingredient-emoji">🥛</span>Panna LA 35 Trevalli Professional</td>
+                        <td><strong>55</strong></td>
+                        <td>9,00%</td>
+                        <td>Fase 1 (+2% evaporazione inclusa, densità 1,008)</td>
+                    </tr>
+                    <tr>
+                        <td><span class="ingredient-emoji">🍯</span>Saccarosio</td>
+                        <td><strong>47</strong></td>
+                        <td>7,83%</td>
+                        <td>Fase 2 (Dolcezza naturale)</td>
+                    </tr>
+                    <tr>
+                        <td><span class="ingredient-emoji">🍯</span>Destrosio</td>
+                        <td><strong>37</strong></td>
+                        <td>6,17%</td>
+                        <td>Fase 2 (Potere anticongelante - 44% del blend aggiunto)</td>
+                    </tr>
+                    <tr>
+                        <td><span class="ingredient-emoji">⚗️</span>Gran Base Pregel</td>
+                        <td><strong>42</strong></td>
+                        <td>7,00%</td>
+                        <td>Fase 2 (Neutro e stabilizzante professionale)</td>
+                    </tr>
+                    <tr>
+                        <td><span class="ingredient-emoji">🍋</span>Citrato di sodio</td>
+                        <td><strong>0,15</strong></td>
+                        <td>-</td>
+                        <td>Fase 1 (Tampone lattico anti-cagliatura)</td>
+                    </tr>
+                    <tr>
+                        <td><span class="ingredient-emoji">🍓</span>Purea di Fragole Fresche (70%)</td>
+                        <td><strong>105</strong></td>
+                        <td>-</td>
+                        <td>Fase 4 (Aggiunta a freddo a ~40°C post-pastorizzazione)</td>
+                    </tr>
+                    <tr>
+                        <td><span class="ingredient-emoji">🍓</span>Fragole Fresche in Pezzetti (30%)</td>
+                        <td><strong>45</strong></td>
+                        <td>-</td>
+                        <td>Fase 7 (Aggiunta post-mantecazione tramite programma MIX-IN)</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p><strong>Peso base X:</strong> 600g (liquido da pastorizzare) | <strong>Peso totale miscela frozen:</strong> 704g | <strong>Volume finale complessivo:</strong> 709ml</p>
+        </div>
+
+        <div class="section parametri">
+            <div class="floating-element">📊</div>
+            <h2>⚙️ Parametri Chimico-Tecnici</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Parametro</th>
+                        <th>Valore Calcolato</th>
+                        <th>Target Gelato Fresco</th>
+                        <th>Stato</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>POD (%) - Potere Dolcificante</td>
+                        <td class="parametro-valore">15,1%</td>
+                        <td>15,0%</td>
+                        <td class="status-ok">✅ Perfetto</td>
+                    </tr>
+                    <tr>
+                        <td>PAC - Potere Anticongelante</td>
+                        <td class="parametro-valore">131</td>
+                        <td>130</td>
+                        <td class="status-ok">✅ Ottimale (Spatolabilità garantita)</td>
+                    </tr>
+                    <tr>
+                        <td>Solidi Totali (%)</td>
+                        <td class="parametro-valore">34,5%</td>
+                        <td>34% - 40%</td>
+                        <td class="status-ok">✅ Nel range (Struttura setosa)</td>
+                    </tr>
+                    <tr>
+                        <td>Grassi Totali (%)</td>
+                        <td class="parametro-valore">4,8%</td>
+                        <td>4% - 7% (Frutta)</td>
+                        <td class="status-ok">✅ Bilanciato (Leggero e pulito)</td>
+                    </tr>
+                    <tr>
+                        <td>Destrosio sul Blend Aggiunto (%)</td>
+                        <td class="parametro-valore">44,0%</td>
+                        <td>≤ 45%</td>
+                        <td class="status-ok">✅ Conforme (Zero sabbiosità)</td>
+                    </tr>
+                    <tr>
+                        <td>pH stimato della miscela</td>
+                        <td class="parametro-valore">6,1 - 6,3</td>
+                        <td>6,0 - 6,8</td>
+                        <td class="status-ok">✅ Stabile (Protezione anti-cagliatura attiva)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="section istruzioni">
+            <div class="floating-element">👨‍🍳</div>
+            <h2>👨‍🍳 Istruzioni Operative passo-passo (Monsieur Cuisine)</h2>
+            
+            <div class="step">
+                <h3>🔥 Fase 1: Miscelazione e Protezione Termica</h3>
+                <p>Versare nel boccale freddo del Monsieur Cuisine il <strong>latte intero (428g)</strong>, la <strong>panna (55g)</strong> e il <strong>citrato di sodio (0,15g)</strong>. Impostare: <strong>3 minuti - velocità 1 - temperatura 50°C</strong> (raggiungerà circa 40-42°C reali). Il citrato protegge immediatamente le proteine del latte dalle cagliature causate dalla successiva acidità della fragola.</p>
+            </div>
+            
+            <div class="step">
+                <h3>🍯 Fase 2: Inserimento Polveri</h3>
+                <p>Pre-miscelare accuratamente in una ciotola le polveri: <strong>saccarosio (47g)</strong>, <strong>destrosio (37g)</strong> e <strong>Gran Base Pregel (42g)</strong>. Fermare il robot, aggiungerle tutte insieme nel boccale, chiudere e ripartire immediatamente.</p>
+            </div>
+            
+            <div class="step">
+                <h3>🌡️ Fase 3A: Pastorizzazione Alta</h3>
+                <p>Impostare sul robot: <strong>6 minuti e 30 secondi - velocità 1-2 - temperatura 130°C</strong> (questo trucco termico permette al Monsieur Cuisine di scaldare stabilmente a 85°C reali, prevenendo ebollizioni violente).</p>
+            </div>
+            
+            <div class="step">
+                <h3>🔄 Fase 3B: Omogeneizzazione e Idratazione</h3>
+                <p>Appena terminata la pastorizzazione, impostare: <strong>2 minuti - velocità 3 - temperatura 85-90°C</strong>. Questo passaggio attiva perfettamente gli idrocolloidi della Gran Base e disperde finemente i globuli di grasso della panna.</p>
+            </div>
+            
+            <div class="step">
+                <h3>🍓 Fase 4: Integrazione Frutta a Freddo</h3>
+                <p>Raffreddare rapidamente la base a circa **40°C**. Nel frattempo, frullare finemente le fragole fresche e filtrarle con un colino a maglie fini per ottenere esattamente **105g di purea liscia**. Aggiungere la purea alla base tiepida e mescolare delicatamente a mano con una frusta per 30 secondi.</p>
+            </div>
+            
+            <div class="step">
+                <h3>❄️ Fase 5: Maturazione e Abbattimento</h3>
+                <p>Versare la miscela (704g) nel bicchiere della Ninja Creami Deluxe fino a coprire la purea. Coprire con il coperchio. Far **maturare in frigorifero a +4°C per 8-12 ore** (fondamentale per idratare le proteine e far riposare gli zuccheri). Successivamente, congelare a **-18°C su una superficie piana in posizione perfettamente verticale per 14-24 ore**.</p>
+            </div>
+            
+            <div class="step">
+                <h3>🍨 Fase 6: Mantecazione Meccanica</h3>
+                <p>Estrarre il barattolo dal congelatore, inserirlo nella ciotola esterna e montare la lama Deluxe. Selezionare il programma **GELATO** (velocità Deluxe standard). Se al termine della prima passata la consistenza appare farinosa o dura (a causa della temperatura del freezer inferiore a -18°C), aggiungere un cucchiaio di latte freddo ed eseguire un ciclo di **RE-SPIN**.</p>
+            </div>
+
+            <div class="step">
+                <h3>🍓 Fase 7: Programma MIX-IN per la Frutta in Pezzi</h3>
+                <p>Estrarre il gelato mantecato, praticare un foro cilindrico al centro profondo fino al fondo usando il manico di un cucchiaio. Inserire all'interno le restanti **fragole a pezzetti (45g)** precedentemente tagliate e ben fredde di frigo. Re-inserire nella macchina e premere il tasto **MIX-IN**. Servire immediatamente.</p>
+            </div>
+        </div>
+
+        <div class="section note">
+            <div class="floating-element">🔬</div>
+            <h2>📝 Note dello Chef & Analisi Strutturale</h2>
+            
+            <div class="alert alert-success">
+                <strong>🍨 Sensazione Tattile:</strong> Grazie al perfetto bilanciamento tra la purea fine amalgamata e i pezzi croccanti inseriti con il MIX-IN, il gelato presenta un contrasto tattile straordinario. La struttura è setosa, priva di aghi di ghiaccio grazie alla Gran Base e al destrosio.
+            </div>
+            
+            <div class="alert alert-warning">
+                <strong>👅 Sapore e Acidità:</strong> L'equilibrio tra la base pannosa e la fragola è esaltato dall'assenza di cagliatura. Le fragole mantengono intatta la loro freschezza aromatica poiché la purea non subisce alcun riscaldamento oltre i 40°C.
+            </div>
+            
+            <p><strong>💡 Allergeni:</strong> Contiene latte e derivati (lattosio e proteine del latte). Può contenere tracce di soia o uova (apportate dagli stabilizzanti della Gran Base Pregel).</p>
+            <p><strong>⚠️ Conservazione:</strong> Consumare preferibilmente entro 3-5 giorni per gustare al massimo la fragranza della frutta fresca. Conservare a -18°C costante.</p>
+        </div>
+    </div>
+</body>
+</html>

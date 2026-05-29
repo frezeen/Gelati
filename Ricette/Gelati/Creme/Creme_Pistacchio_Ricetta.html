@@ -231,10 +231,115 @@
             opacity: 0.3;
             animation: float 8s ease-in-out infinite;
         }
+        
+        .printable-title { display: none; }
+        
+        @page {
+            size: A4;
+            margin: 0.5cm !important;
+        }
+        @media print {
+            body {
+                background: none !important;
+                color: #000000 !important;
+                padding: 0 !important;
+                margin: 0 !important;
+                font-size: 8.5pt !important;
+                line-height: 1.2 !important;
+            }
+            .container {
+                box-shadow: none !important;
+                border-radius: 0 !important;
+                background: none !important;
+                padding: 0 !important;
+                margin: 0 !important;
+                max-width: 100% !important;
+            }
+            .header, .nav-buttons, .parametri, .note, .floating-element, .header-image {
+                display: none !important;
+            }
+            .section {
+                margin: 2px 0 !important;
+                padding: 2px 0 !important;
+                box-shadow: none !important;
+                background: none !important;
+                color: #000000 !important;
+                transform: none !important;
+            }
+            .section h2 {
+                color: #000000 !important;
+                font-size: 11pt !important;
+                border-bottom: 1px solid #000000 !important;
+                padding-bottom: 2px !important;
+                margin: 0 0 5px 0 !important;
+            }
+            table {
+                box-shadow: none !important;
+                border: 1px solid #000000 !important;
+                margin: 5px 0 !important;
+                background: #ffffff !important;
+                width: 100% !important;
+            }
+            th {
+                background: #f0f0f0 !important;
+                color: #000000 !important;
+                border: 1px solid #000000 !important;
+                padding: 4px 6px !important;
+                font-size: 8.5pt !important;
+            }
+            td {
+                border: 1px solid #000000 !important;
+                color: #000000 !important;
+                padding: 4px 6px !important;
+                font-size: 8pt !important;
+            }
+            .step {
+                background: none !important;
+                border-left: 2px solid #000000 !important;
+                padding: 4px 6px !important;
+                margin: 3px 0 !important;
+                color: #000000 !important;
+                transform: none !important;
+                page-break-inside: avoid;
+            }
+            .step h3, .step h4, .step strong {
+                font-size: 8.5pt !important;
+                margin-bottom: 2px !important;
+                color: #000000 !important;
+            }
+            .step p {
+                font-size: 8pt !important;
+                color: #000000 !important;
+                margin: 0 !important;
+            }
+            .printable-title {
+                display: block !important;
+                text-align: center;
+                margin-bottom: 8px;
+                border-bottom: 2px solid #000000;
+                padding-bottom: 4px;
+            }
+            .printable-title h1 {
+                font-size: 14pt !important;
+                margin: 0 !important;
+                color: #000000 !important;
+            }
+            .printable-title p {
+                font-size: 8.5pt !important;
+                margin: 2px 0 0 0 !important;
+                color: #444444 !important;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="container">
+        <!-- Sezione stampabile A4 (nascosta su schermo) -->
+        <div class="printable-title">
+            <h1>🌰 Gelato Pistacchio</h1>
+            <p>Ricetta Pratica per Ninja Creami Deluxe - Volume: 709ml</p>
+        </div>
+
         <div class="header">
             <h1>🌰 Gelato Pistacchio</h1>
             <p>Ricetta professionale per Ninja Creami Deluxe - Volume: 709ml</p>
@@ -245,6 +350,7 @@
                 <a href="Creme_Pistacchio_Simulazione.html" class="nav-button">🔬 Vai alla Simulazione Sensoriale</a>
                 <a href="index.html" class="nav-button">🥛 Torna alle Creme</a>
                 <a href="../../../index.html" class="nav-button">🏠 Menu Principale</a>
+                <button onclick="window.print()" class="nav-button" style="cursor: pointer; font-family: inherit; background: rgba(0,0,0,0.3); border: 1px solid white;">🖨️ Stampa Ricetta A4</button>
             </div>
         </div>
 
